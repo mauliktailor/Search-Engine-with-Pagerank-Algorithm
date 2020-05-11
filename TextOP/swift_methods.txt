@@ -1,0 +1,183 @@
+Swift Methods Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Methods Advertisements Previous Page Next Page   In Swift language Functions associated with particular types are referred to as Methods. In Objective C Classes are used to define methods, whereas Swift language provides the user flexibility to have methods for Classes, Structures and Enumerations. Instance Methods In Swift language, Classes, Structures and Enumeration instances are accessed through the instance methods. Instance methods provide functionality. To access and modify instance properties. functionality related to the instance's need. Instance method can be written inside the {} curly braces. It has implicit access to methods and properties of the type instance. When a specific instance of the type is called it will get access to that particular instance. Syntax 
+func funcname(Parameters) -> returntype {
+   Statement1
+   Statement2
+   ---
+   Statement N
+   return parameters
+}
+ Example 
+class calculations {
+   let a: Int
+   let b: Int
+   let res: Int
+
+   init(a: Int, b: Int) {
+      self.a = a
+      self.b = b
+      res = a + b
+   }
+ 
+   func tot(c: Int) -> Int {
+      return res - c
+   }
+ 
+   func result() {
+      println("Result is: \(tot(20))")
+      println("Result is: \(tot(50))")
+   }
+}
+let pri = calculations(a: 600, b: 300)
+pri.result()
+ When we run the above program using playground, we get the following result ? 
+Result is: 880
+Result is: 850
+ Class Calculations defines two instance methods ? init() is defined to add two numbers a and b and store it in result 'res' tot() is used to subtract the 'res' from passing 'c' value Finally, to print the calculations methods with values for a and b is called. Instance methods are accessed with '.' dot syntax Local and External Parameter Names Swift Functions describe both local and global declarations for their variables. Similarly, Swift Methods naming conventions also resembles as that of Objective C. But the characteristics of local and global parameter name declarations are different for functions and methods. The first parameter in swift are referred by preposition names as 'with', 'for' and 'by' for easy to access naming conventions. Swift provides the flexibility in methods by declaring first parameter name as local parameter names and the remaining parameter names to be of global parameter names. Here 'no1' is declared by swift methods as local parameter names. 'no2' is used for global declarations and accessed through out the program. 
+class division {
+   var count: Int = 0
+   func incrementBy(no1: Int, no2: Int) {
+      count = no1 / no2
+      println(count)
+   }
+}
+
+let counter = division()
+counter.incrementBy(1800, no2: 3)
+counter.incrementBy(1600, no2: 5)
+counter.incrementBy(11000, no2: 3)
+ When we run the above program using playground, we get the following result ? 
+600
+320
+3666
+ External Parameter Name with # and _ Symbol Even though Swift methods provide first parameter names for local declarations, the user has the provision to modify the parameter names from local to global declarations. This can be done by prefixing '#' symbol with the first parameter name. By doing so, the first parameter can be accessed globally throughout the modules. When the user needs to access the subsequent parameter names with an external name, the methods name is overridden with the help of '_' symbol. 
+class multiplication {
+   var count: Int = 0
+   func incrementBy(#no1: Int, no2: Int) {
+      count = no1 * no2
+      println(count)
+   }
+}
+
+let counter = multiplication()
+counter.incrementBy(no1: 800, no2: 3)
+counter.incrementBy(no1: 100, no2: 5)
+counter.incrementBy(no1: 15000, no2: 3)
+ When we run the above program using playground, we get the following result ? 
+2400
+500
+45000
+ Self property in Methods Methods have an implicit property known as 'self' for all its defined type instances. 'Self' property is used to refer the current instances for its defined methods. 
+class calculations {
+   let a: Int
+   let b: Int
+   let res: Int
+
+   init(a: Int, b: Int) {
+      self.a = a
+      self.b = b
+      res = a + b
+      println("Inside Self Block: \(res)")
+   }
+
+   func tot(c: Int) -> Int {
+      return res - c
+   }
+
+   func result() {
+      println("Result is: \(tot(20))")
+      println("Result is: \(tot(50))")
+   }
+}
+
+let pri = calculations(a: 600, b: 300)
+let sum = calculations(a: 1200, b: 300)
+
+pri.result()
+sum.result()
+ When we run the above program using playground, we get the following result ? 
+Inside Self Block: 900
+Inside Self Block: 1500
+Result is: 880
+Result is: 850
+Result is: 1480
+Result is: 1450
+ Modifying Value Types from Instance Methods In Swift language structures and enumerations belong to value types which cannot be altered by its instance methods. However, swift language provides flexibility to modify the value types by 'mutating' behavior. Mutate will make any changes in the instance methods and will return back to the original form after the execution of the method. Also, by the 'self' property new instance is created for its implicit function and will replace the existing method after its execution 
+struct area {
+   var length = 1
+   var breadth = 1
+	
+   func area() -> Int {
+      return length * breadth
+   }
+ 
+   mutating func scaleBy(res: Int) {
+      length *= res
+      breadth *= res
+
+      println(length)
+      println(breadth)
+   }
+}
+
+var val = area(length: 3, breadth: 5)
+val.scaleBy(3)
+val.scaleBy(30)
+val.scaleBy(300)
+ When we run the above program using playground, we get the following result ? 
+9
+15
+270
+450
+81000
+135000
+ Self Property for Mutating Method Mutating methods combined with 'self' property assigns a new instance to the defined method. 
+struct area {
+   var length = 1
+   var breadth = 1
+
+   func area() -> Int {
+      return length * breadth
+   }
+
+   mutating func scaleBy(res: Int) {
+      self.length *= res
+      self.breadth *= res
+      println(length)
+      println(breadth)
+   }
+}
+var val = area(length: 3, breadth: 5)
+val.scaleBy(13)
+ When we run the above program using playground, we get the following result ? 
+39
+65
+ Type Methods When a particular instance of a method is called, it is called as an Instance method; and when the method calls a particular type of a method, it is called as 'Type Methods'. Type methods for 'classes' are defined by the 'func' keyword and structures and enumerations type methods are defined with the 'static' keyword before the 'func' keyword. Type methods are called and accessed by '.' syntax where instead of calling a particular instance the whole method is invoked. 
+class Math {
+   class func abs(number: Int) -> Int {
+      if number < 0 {
+         return (-number)
+      }else {
+         return number
+      }
+   }
+}
+
+struct absno {
+   static func abs(number: Int) -> Int {
+      if number < 0 {
+         return (-number)
+      }else {
+         return number
+      }
+   }
+}
+
+let no = Math.abs(-35)
+let num = absno.abs(-5)
+
+println(no)
+println(num)
+ When we run the above program using playground, we get the following result ? 
+35
+5
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

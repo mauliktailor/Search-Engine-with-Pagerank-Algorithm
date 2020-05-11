@@ -1,0 +1,764 @@
+<!doctype html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_functions.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Swift Functions</title>
+<meta name="description" content="Swift Functions - Learn Swift programming on iOS in simple and easy steps starting from its overview, basic syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<meta name="keywords" content="Swift, Tutorial, beginners, overview, basic Syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<base  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="471319149685276" />
+<meta property="og:site_name" content="www.tutorialspoint.com" />
+<meta name="robots" content="index, follow"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="../theme/js/script-min-v4.js"></script>
+<link rel="stylesheet" href="../theme/css/style-min5e1f.css?v=2">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #f05c02 url(../images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #f05c02 !important;}
+.submenu-item{ border-bottom: 2px solid #f05c02 !important; border-top: 2px solid #f05c02 !important }
+.ace_scroller{overflow: auto!important;}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img  src="../images/loading-cg.gif" alt="" width="70" height="70" />
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="../index-2.html" title="tutorialspoint">
+      <img alt="tutorialspoint" src="images/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="../about/about_careers.html" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDFiles</a> </li>
+            <li> <a href="../whiteboard.html"><img src="../theme/css/icons/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="../netmeeting.html"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="../online_dev_tools.html"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="../articles/index.html"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="../index-2.html"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../codingground.html"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../tutor_connect/index.html"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../videotutorials/index.html"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="images/swift-mini-logo.jpg" alt="Swift Tutorial" />
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Tutorial</li>
+<li><a href="index.html">Swift - Home</a></li>
+<li><a href="swift_overview.html">Swift - Overview</a></li>
+<li><a href="swift_environment.html">Swift - Environment</a></li>
+<li><a href="swift_basic_syntax.html">Swift - Basic Syntax</a></li>
+<li><a href="swift_data_types.html">Swift - Data Types</a></li>
+<li><a href="swift_variables.html">Swift - Variables</a></li>
+<li><a href="swift_optionals.html">Swift - Optionals</a></li>
+<li><a href="swift_constants.html">Swift - Constants</a></li>
+<li><a href="swift_literals.html">Swift - Literals</a></li>
+<li><a href="swift_operators.html">Swift - Operators</a></li>
+<li><a href="swift_decision_making.html">Swift - Decision Making</a></li>
+<li><a href="swift_loops.html">Swift - Loops</a></li>
+<li><a href="swift_strings.html">Swift - Strings</a></li>
+<li><a href="swift_characters.html">Swift - Characters</a></li>
+<li><a href="swift_arrays.html">Swift - Arrays</a></li>
+<li><a href="swift_dictionaries.html">Swift - Dictionaries</a></li>
+<li><a href="swift_functions.html">Swift - Functions</a></li>
+<li><a href="swift_closures.html">Swift - Closures</a></li>
+<li><a href="swift_enumerations.html">Swift - Enumerations</a></li>
+<li><a href="swift_structures.html">Swift - Structures</a></li>
+<li><a href="swift_classes.html">Swift - Classes</a></li>
+<li><a href="swift_properties.html">Swift - Properties</a></li>
+<li><a href="swift_methods.html">Swift - Methods</a></li>
+<li><a href="swift_subscripts.html">Swift - Subscripts</a></li>
+<li><a href="swift_inheritance.html">Swift - Inheritance</a></li>
+<li><a href="swift_initialization.html">Swift - Initialization</a></li>
+<li><a href="swift_deinitialization.html">Swift - Deinitialization</a></li>
+<li><a href="swift_arc_overview.html">Swift - ARC Overview</a></li>
+<li><a href="swift_optional_chaining.html">Swift - Optional Chaining</a></li>
+<li><a href="swift_type_casting.html">Swift - Type Casting</a></li>
+<li><a href="swift_extensions.html">Swift - Extensions</a></li>
+<li><a href="swift_protocols.html">Swift - Protocols</a></li>
+<li><a href="swift_generics.html">Swift - Generics</a></li>
+<li><a href="swift_access_control.html">Swift - Access Control</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Useful Resources</li>
+<li><a href="swift_quick_guide.html">Swift - Quick Guide</a></li>
+<li><a href="swift_useful_resources.html">Swift - Useful Resources</a></li>
+<li><a href="swift_discussion.html">Swift - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="../developers_best_practices/index.html">Developer's Best Practices</a></li>
+<li><a target="_top" href="../questions_and_answers.html">Questions and Answers</a></li>
+<li><a target="_top" href="../effective_resume_writing.html">Effective Resume Writing</a></li>
+<li><a target="_top" href="../hr_interview_questions/index.html">HR Interview Questions</a></li>
+<li><a target="_top" href="../computer_glossary.html">Computer Glossary</a></li>
+<li><a target="_top" href="../computer_whoiswho.html">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Swift - Functions</h1>
+<hr />
+<div class="topgooglead">
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt"> 
+</script>
+</div>
+<hr />
+<div class="pre-btn">
+<a href="swift_dictionaries.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_closures.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>A function is a set of statements organized together to perform a specific task. A Swift function can be as simple as a simple C function to as complex as an Objective C language function. It allows us to pass local and global parameter values inside the function calls.</p>
+<ul class="list">
+<li><p><b>Function Declaration</b> &minus; It tells the compiler about a function's name, return type, and parameters.</p></li>
+<li><p><b>Function Definition</b> &minus; It provides the actual body of the function.</p></li>
+</ul>
+<p>Swift functions contain parameter type and its return types.</p>
+<h2>Function Definition</h2>
+<p>In Swift, a function is defined by the "func" keyword. When a function is newly defined, it may take one or several values as input 'parameters' to the function and it will process the functions in the main body and pass back the values to the functions as output 'return types'.</p>
+<p>Every function has a function name, which describes the task that the function performs. To use a function, you "call" that function with its name and pass input values (known as arguments) that match the types of the function's parameters. Function parameters are also called as 'tuples'.</p>
+<p>A function's arguments must always be provided in the same order as the function's parameter list and the return values are followed by &rarr;.</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+func funcname(Parameters) -> returntype {
+   Statement1
+   Statement2
+   ---
+   Statement N
+   return parameters
+}
+</pre>
+<p>Take a look at the following code. The student’s name is declared as string datatype declared inside the function 'student' and when the function is called, it will return student’s name.</p>
+<pre class="prettyprint notranslate tryit">
+func student(name: String) -> String {
+   return name
+}
+println(student("First Program"))
+println(student("About Functions"))
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+First Program
+About Functions
+</pre>
+<h2>Calling a Function</h2>
+<p>Let us suppose we defined a function called 'display' to Consider for example to display the numbers a function with function name 'display' is initialized first with argument 'no1' which holds integer data type. Then the argument 'no1' is assigned to argument 'a' which hereafter will point to the same data type integer. Now the argument 'a' is returned to the function. Here display() function will hold the integer value and return the integer values when each and every time the function is invoked.</p>
+<pre class="prettyprint notranslate tryit">
+func display(no1: Int) -> Int {
+   let a = no1
+   return a
+}
+
+println(display(100))
+println(display(200))
+</pre>
+<p>When we run above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+100
+200
+</pre>
+<h2>Parameters and Return Values</h2>
+<p>Swift provides flexible function parameters and its return values from simple to complex values. Similar to that of C and Objective C, functions in Swift may also take several forms.</p>
+<h2>Functions with Parameters</h2>
+<p>A function is accessed by passing its parameter values to the body of the function. We can pass single to multiple parameter values as tuples inside the function.</p> 
+<pre class="prettyprint notranslate tryit">
+func mult(no1: Int, no2: Int) -> Int {
+   return no1*no2
+}
+println(mult(2,20))
+println(mult(3,15))
+println(mult(4,30))
+</pre>
+<p>When we run above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+40
+45
+120
+</pre>
+<h2>Functions without Parameters</h2>
+<p>We may also have functions without any parameters.</p>
+<h3>Syntax</h3>
+<pre class="prettyprint notranslate">
+func funcname() -> datatype {
+   return datatype
+}
+</pre>
+<p>Following is an example having a function without a parameter &minus;</p>
+<pre class="prettyprint notranslate tryit">
+func votersname() -> String {
+   return "Alice"
+}
+println(votersname()) 
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Alice
+</pre>
+<h2>Functions with Return Values</h2>
+<p>Functions are also used to return string, integer, and float data type values as return types. To find out the largest and smallest number in a given array function 'ls' is declared with large and small integer datatypes.</p>
+<p>An array is initialized to hold integer values. Then the array is processed and each and every value in the array is read and compared for its previous value. When the value is lesser than the previous one it is stored in 'small' argument, otherwise it is stored in 'large' argument and the values are returned by calling the function.</p>
+<pre class="prettyprint notranslate tryit">
+func ls(array: [Int]) -> (large: Int, small: Int) {
+   var lar = array[0]
+   var sma = array[0]
+   for i in array[1..&lt;array.count] {
+      if i &lt; sma {
+         sma = i
+      }else if i &gt; lar {
+         lar = i
+      }
+   }
+   return (lar, sma)
+}
+let num = ls([40,12,-5,78,98])
+println("Largest number is: \(num.large) and smallest number is: \(num.small)")
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Largest number is: 98 and smallest number is: -5
+</pre>
+<h2>Functions Without Return Values</h2>
+<p>Some functions may have arguments declared inside the function without any return values. The following program declares <b>a</b> and <b>b</b> as arguments to the sum() function. inside the function itself the values for arguments <b>a</b> and <b>b</b> are passed by invoking the function call sum() and its values are printed thereby eliminating return values.</p>
+<pre class="prettyprint notranslate tryit">
+func sum(a: Int, b: Int) {
+   let a = a + b
+   let b = a - b
+   println(a, b)
+}
+sum(20, 10)
+sum(40,10)
+sum(24,6)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+(30, 20)
+(50, 40)
+(30, 24)
+</pre>
+<h2>Functions with Optional Return Types</h2>
+<p>Swift introduces 'optional' feature to get rid of problems by introducing a safety measure. Consider for example we are declaring function values return type as integer but what will happen when the function returns a string value or either a nil value. In that case compiler will return an error value. 'optional' are introduced to get rid of these problems.</p>
+<p>Optional functions will take two forms 'value' and a 'nil'. We will mention 'Optionals' with the key reserved character '?' to check whether the tuple is returning a value or a nil value.</p> 
+<pre class="prettyprint notranslate tryit">
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+   if array.isEmpty { return nil }
+   var currentMin = array[0]
+   var currentMax = array[0]
+   for value in array[1..&lt;array.count] {
+      if value &lt; currentMin {
+         currentMin = value
+      }else if value &gt; currentMax {
+         currentMax = value
+      }
+   }
+   return (currentMin, currentMax)
+}
+if let bounds = minMax([8, -6, 2, 109, 3, 71]) {
+   println("min is \(bounds.min) and max is \(bounds.max)")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+min is -6 and max is 109
+</pre>
+<p>'Optionals' are used to check 'nil' or garbage values thereby consuming lot of time in debugging and make the code efficient and readable for the user.</p>
+<h2>Functions Local Vs External Parameter Names</h2>
+<h3>Local Parameter Names</h3>
+<p>Local parameter names are accessed inside the function alone.</p>
+<pre class="prettyprint notranslate">
+func sample(number: Int) {
+   println(number)
+}
+</pre>
+<p>Here, the <b>func</b> sample argument number is declared as internal variable since it is accessed internally by the function sample(). Here the 'number' is declared as local variable but the reference to the variable is made outside the function with the following statement &minus;</p>
+<pre class="prettyprint notranslate tryit">
+func sample(number: Int) {
+   println(number)
+}
+sample(1)
+sample(2)
+sample(3)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+1
+2
+3
+</pre>
+<h3>External Parameter Names</h3>
+<p>External parameter names allow us to name a function parameters to make their purpose more clear. For example below you can name two function parameters and then call that function as follows &minus;</p>
+<pre class="prettyprint notranslate tryit">
+func pow(firstArg a: Int, secondArg b: Int) -> Int {
+   var res = a
+   for _ in 1..&lt;b {
+      res = res * a
+   }
+   println(res)
+   return res
+}
+pow(firstArg:5, secondArg:3)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+125
+</pre>
+<h2>Variadic Parameters</h2>
+<p>When we want to define function with multiple number of arguments, then we can declare the members as 'variadic' parameters. Parameters can be specified as variadic by (&middot;&middot;&middot;) after the parameter name.</p>
+<pre class="prettyprint notranslate tryit">
+func vari&lt;N&gt;(members: N...) {
+   for i in members {
+      println(i)
+   }
+}
+vari(4,3,5)
+vari(4.5, 3.1, 5.6)
+vari("Swift", "Enumerations", "Closures")
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+4
+3
+5
+4.5
+3.1
+5.6
+Swift
+Enumerations
+Closures
+</pre>
+<h2>Constant, Variable and I/O Parameters</h2>
+<p>Functions by default consider the parameters as 'constant', whereas the user can declare the arguments to the functions as variables also. We already discussed that 'let' keyword is used to declare constant parameters and variable parameters is defined with 'var' keyword.</p>
+<p>I/O parameters in Swift provide functionality to retain the parameter values even though its values are modified after the function call. At the beginning of the function parameter definition, 'inout' keyword is declared to retain the member values.</p>
+<p>It derives the keyword 'inout' since its values are passed 'in' to the function and its values are accessed and modified by its function body and it is returned back 'out' of the function to modify the original argument.</p>
+<p>Variables are only passed as an argument for in-out parameter since its values alone are modified inside and outside the function. Hence no need to declare strings and literals as in-out parameters. '&amp;' before a variable name refers that we are passing the argument to the in-out parameter.</p>
+<pre class="prettyprint notranslate tryit">
+func temp(inout a1: Int, inout b1: Int) {
+   let t = a1
+   a1 = b1
+   b1 = t
+}
+var no = 2
+var co = 10
+temp(&amp;no, &amp;co)
+println("Swapped values are \(no), \(co)")
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Swapped values are 10, 2
+</pre>
+<h2>Function Types &amp; its Usage</h2>
+<p>Each and every function follows the specific function by considering the input parameters and outputs the desired result.</p>
+<pre class="prettyprint notranslate">
+func inputs(no1: Int, no2: Int) -> Int {
+   return no1/no2
+}
+</pre>
+<p>Following is an example &minus;</p>
+<pre class="prettyprint notranslate tryit">
+func inputs(no1: Int, no2: Int) -> Int {
+   return no1/no2
+}
+println(inputs(20,10))
+println(inputs(36,6))
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+2
+6
+</pre>
+<p>Here the function is initialized with two arguments no1 and no2 as integer data types and its return type is also declared as 'int'.</p>
+<pre class="prettyprint notranslate">
+Func inputstr(name: String) -> String {
+   return name
+}
+</pre>
+<p>Here the function is declared as <b>string</b> datatype.</p>
+<p>Functions may also have <b>void</b> data types and such functions won't return anything.</p>
+<pre class="prettyprint notranslate tryit">
+func inputstr() {
+   println("Swift Functions")
+   println("Types and its Usage")
+}
+inputstr()
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Swift Functions
+Types and its Usage
+</pre>
+<p>The above function is declared as a void function with no arguments and no return values.</p>
+<h2>Using Function Types</h2>
+<p>Functions are first passed with integer, float or string type arguments and then it is passed as constants or variables to the function as mentioned below.</p>
+<pre class="prettyprint notranslate">
+var addition: (Int, Int) -> Int = sum
+</pre>
+<p>Here sum is a function name having 'a' and 'b' integer variables which is now declared as a variable to the function name addition. Hereafter both addition and sum function both have same number of arguments declared as integer datatype and also return integer values as references.</p>
+<pre class="prettyprint notranslate tryit">
+func sum(a: Int, b: Int) -> Int {
+   return a + b
+}
+var addition: (Int, Int) -> Int = sum
+println("Result: \(addition(40, 89))")
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Result: 129
+</pre>
+<h2>Function Types as Parameter Types &amp; Return Types</h2>
+<p>We can also pass the function itself as parameter types to another function.</p>
+<pre class="prettyprint notranslate tryit">
+func sum(a: Int, b: Int) -> Int {
+   return a + b
+}
+var addition: (Int, Int) -> Int = sum
+println("Result: \(addition(40, 89))")
+func another(addition: (Int, Int) -> Int, a: Int, b: Int) {
+   println("Result: \(addition(a, b))")
+}
+another(sum, 10, 20)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Result: 129
+Result: 30
+</pre>
+<h2>Nested Functions</h2>
+<p>A nested function provides the facility to call the outer function by invoking the inside function.</p>
+<pre class="prettyprint notranslate tryit">
+func calcDecrement(forDecrement total: Int) -> () -> Int {
+   var overallDecrement = 0
+   func decrementer() -> Int {
+      overallDecrement -= total
+      return overallDecrement
+   }
+   return decrementer
+}
+let decrem = calcDecrement(forDecrement: 30)
+println(decrem())
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+-30
+</pre>
+<hr />
+<div class="pre-btn">
+<a href="swift_dictionaries.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="../cgi-bin/printpage.html" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_closures.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr />
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/swift/swift_functions.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/facebookIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/swift/swift_functions.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/twitterIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/swift/swift_functions.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/linkedinIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/swift/swift_functions.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/googlePlusIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/swift/swift_functions.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/StumbleUponIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/swift/swift_functions.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/reddit.jpg" alt="img" />
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="../index-2.html" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="../scripts/img/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="../about/tutorials_writing.html">Write for us</a></li>
+         <li><a href="../about/faq.html">FAQ's</a></li>
+         <li><a href="../about/about_helping.html">Helping</a></li>
+         <li><a href="../about/contact_us.html">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>&copy; Copyright 2017. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="../theme/js/custom-min7b30.js?v=4"></script>
+<script src="../../www.google-analytics.com/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="../theme/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('try_swift.html');
+   tryit.compile();
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Swift Functions",
+    "name": "Swift Functions",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/swift/swift_functions.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/swift/images/swift-mini-logo.jpg",
+        "width": 255,
+        "height": 194
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "July 23 2017 03:34:49.",
+    "dateModified": "July 23 2017 03:34:49.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "A function is a set of statements organized together to perform a specific task. A Swift function can be as simple as a simple C function to as complex as an Objective C language function. It allows us to pass local and global parameter values inside the ..."
+}
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Computer Programming",
+                "@id": "https://www.tutorialspoint.com/computer_programming_tutorials.htm"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "Swift",
+                "@id": "https://www.tutorialspoint.com/swift"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+                "name": "Swift - Functions"
+            }
+        }
+    ]
+}
+</script></div>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_functions.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:04 GMT -->
+</html>

@@ -1,0 +1,201 @@
+Swift Extensions Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Extensions Advertisements Previous Page Next Page   Functionality of an existing class, structure or enumeration type can be added with the help of extensions. Type functionality can be added with extensions but overriding the functionality is not possible with extensions. Swift Extension Functionalities ? Adding computed properties and computed type properties. Defining instance and type methods. Providing new initializers. Defining subscripts. Defining and using new nested types. Making an existing type conform to a protocol. Extensions are declared with the keyword 'extension'. Syntax 
+extension SomeType {
+   // new functionality can be added here
+}
+ Existing type can also be added with extensions to make it as a protocol standard and its syntax is similar to that of classes or structures. 
+extension SomeType: SomeProtocol, AnotherProtocol {
+   // protocol requirements is described here
+}
+ Computed Properties Computed 'instance' and 'type' properties can also be extended with the help of extensions. 
+extension Int {
+   var add: Int {return self + 100 }
+   var sub: Int { return self - 10 }
+   var mul: Int { return self * 10 }
+   var div: Int { return self / 5 }
+}
+
+let addition = 3.add
+println("Addition is \(addition)")
+
+let subtraction = 120.sub
+println("Subtraction is \(subtraction)")
+
+let multiplication = 39.mul
+println("Multiplication is \(multiplication)")
+
+let division = 55.div
+println("Division is \(division)")
+
+let mix = 30.add + 34.sub
+println("Mixed Type is \(mix)")
+ When we run the above program using playground, we get the following result ? 
+Addition is 103
+Subtraction is 110
+Multiplication is 390
+Division is 11
+Mixed Type is 154
+ Initializers Swift provides the flexibility to add new initializers to an existing type by extensions. The user can add their own custom types to extend the types already defined and additional initialization options are also possible. Extensions supports only init(). deinit() is not supported by the extensions. 
+struct sum {
+   var num1 = 100, num2 = 200
+}
+
+struct diff {
+   var no1 = 200, no2 = 100
+}
+
+struct mult {
+   var a = sum()
+   var b = diff()
+}
+
+let calc = mult()
+println ("Inside mult block \(calc.a.num1, calc.a.num2)")
+println("Inside mult block \(calc.b.no1, calc.b.no2)")
+
+let memcalc = mult(a: sum(num1: 300, num2: 500),b: diff(no1: 300, no2: 100))
+
+println("Inside mult block \(memcalc.a.num1, memcalc.a.num2)")
+println("Inside mult block \(memcalc.b.no1, memcalc.b.no2)")
+
+extension mult {
+   init(x: sum, y: diff) {
+      let X = x.num1 + x.num2
+      let Y = y.no1 + y.no2
+   }
+}
+
+
+let a = sum(num1: 100, num2: 200)
+println("Inside Sum Block:\( a.num1, a.num2)")
+
+
+let b = diff(no1: 200, no2: 100)
+println("Inside Diff Block: \(b.no1, b.no2)")
+ When we run the above program using playground, we get the following result ? 
+Inside mult block (100, 200)
+Inside mult block (200, 100)
+Inside mult block (300, 500)
+Inside mult block (300, 100)
+Inside Sum Block:(100, 200)
+Inside Diff Block: (200, 100)
+ Methods New instance methods and type methods can be added further to the subclass with the help of extensions. 
+extension Int {
+   func topics(summation: () -> ()) {
+      for _ in 0..<self {
+         summation() 
+      }
+   }
+}
+
+4.topics({
+   println("Inside Extensions Block")       
+})    
+
+3.topics({
+   println("Inside Type Casting Block")       
+})
+ When we run the above program using playground, we get the following result ? 
+Inside Extensions Block
+Inside Extensions Block
+Inside Extensions Block
+Inside Extensions Block
+Inside Type Casting Block
+Inside Type Casting Block
+Inside Type Casting Block
+ topics() function takes argument of type '(summation: () ? ())' to indicate the function does not take any arguments and it won't return any values. To call that function multiple number of times, for block is initialized and call to the method with topic() is initialized. Mutating Instance Methods Instance methods can also be mutated when declared as extensions. Structure and enumeration methods that modify self or its properties must mark the instance method as mutating, just like mutating methods from an original implementation. 
+extension Double {
+   mutating func square() {
+      let pi = 3.1415
+      self = pi * self * self
+   }
+}
+
+var Trial1 = 3.3
+Trial1.square()
+println("Area of circle is: \(Trial1)")
+
+
+var Trial2 = 5.8
+Trial2.square()
+println("Area of circle is: \(Trial2)")
+
+
+var Trial3 = 120.3
+Trial3.square()
+println("Area of circle is: \(Trial3)")
+ When we run the above program using playground, we get the following result ? 
+Area of circle is: 34.210935
+Area of circle is: 105.68006
+Area of circle is: 45464.070735
+ Subscripts Adding new subscripts to already declared instances can also be possible with extensions. 
+extension Int {
+   subscript(var multtable: Int) -> Int {
+      var no1 = 1
+      while multtable > 0 {
+         no1 *= 10
+         --multtable
+      }
+      return (self / no1) % 10
+   }
+}
+
+println(12[0])
+println(7869[1])
+println(786543[2])
+ When we run the above program using playground, we get the following result ? 
+2
+6
+5
+ Nested Types Nested types for class, structure and enumeration instances can also be extended with the help of extensions. 
+extension Int {
+   enum calc {
+      case add
+      case sub
+      case mult
+      case div
+      case anything
+   }
+
+   var print: calc {
+      switch self {
+         case 0:
+            return .add
+         case 1:
+            return .sub
+         case 2:
+            return .mult
+         case 3:
+            return .div
+         default:
+            return .anything
+       }
+   }
+}
+
+func result(numb: [Int]) {
+   for i in numb {
+      switch i.print {
+         case .add:
+            println(" 10 ")
+          case .sub:
+            println(" 20 ")
+         case .mult:
+         println(" 30 ")
+         case .div:
+         println(" 40 ")
+         default:
+         println(" 50 ")
+
+      }
+   }
+}
+
+result([0, 1, 2, 3, 4, 7])
+ When we run the above program using playground, we get the following result ? 
+10
+20
+30
+40
+50
+50
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

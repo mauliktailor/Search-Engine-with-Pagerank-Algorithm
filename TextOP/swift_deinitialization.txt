@@ -1,0 +1,39 @@
+Swift Deinitialization Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Deinitialization Advertisements Previous Page Next Page   Before a class instance needs to be deallocated 'deinitializer' has to be called to deallocate the memory space. The keyword 'deinit' is used to deallocate the memory spaces occupied by the system resources. Deinitialization is available only on class types. Deinitialization to Deallocate Memory Space Swift automatically deallocates your instances when they are no longer needed, to free up resources. Swift handles the memory management of instances through automatic reference counting (ARC), as described in Automatic Reference Counting. Typically you don't need to perform manual clean-up when your instances are deallocated. However, when you are working with your own resources, you might need to perform some additional clean-up yourself. For example, if you create a custom class to open a file and write some data to it, you might need to close the file before the class instance is deallocated. 
+var counter = 0;  // for reference counting
+class baseclass {
+   init() {
+      counter++;
+   }
+   deinit {
+      counter--;
+   }
+}
+
+var print: baseclass? = baseclass()
+println(counter)
+print = nil
+println(counter)
+ When we run the above program using playground, we get the following result ? 
+1
+0
+ When print = nil statement is omitted the values of the counter retains the same since it is not deinitialized. 
+var counter = 0;  // for reference counting
+
+class baseclass {
+   init() {
+      counter++;
+   }
+
+   deinit {
+      counter--;
+   }
+}
+
+var print: baseclass? = baseclass()
+
+println(counter)
+println(counter)
+ When we run the above program using playground, we get the following result ? 
+1
+1
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

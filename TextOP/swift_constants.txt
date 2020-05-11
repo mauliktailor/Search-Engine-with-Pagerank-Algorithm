@@ -1,0 +1,44 @@
+Swift Constants Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Constants Advertisements Previous Page Next Page   Constants refer to fixed values that a program may not alter during its execution. Constants can be of any of the basic data types like an integer constant, a floating constant, a character constant, or a string literal. There are enumeration constants as well. Constants are treated just like regular variables except the fact that their values cannot be modified after their definition. Constants Declaration Before you use constants, you must declare them using let keyword as follows ? 
+let constantName = <initial value>
+ Following is a simple example to show how to declare a constant in Swift ? 
+import Cocoa
+
+let constA = 42
+println(constA)
+ When we run the above program using playground, we get the following result ? 
+42
+ Type Annotations You can provide a type annotation when you declare a constant, to be clear about the kind of values the constant can store. Following is the syntax ? 
+var constantName:<data type> = <optional initial value>
+ The following example shows how to declare a constant in Swift using Annotation. Here it is important to note that it is mandatory to provide an initial value while creating a constant ? 
+import Cocoa
+
+let constA = 42
+println(constA)
+
+let constB:Float = 3.14159
+
+println(constB)
+ When we run the above program using playground, we get the following result ? 
+42
+3.1415901184082
+ Naming Constants The name of a constant can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because Swift is a case-sensitive programming language. You can use simple or Unicode characters to name your variables. Following are valid examples ? 
+import Cocoa
+
+let _const = "Hello, Swift!"
+println(_const)
+
+let ?? = "????"
+println(??)
+ When we run the above program using playground, we get the following result ? 
+Hello, Swift!
+????
+ Printing Constants You can print the current value of a constant or variable using println function. You can interpolate a variable value by wrapping the name in parentheses and escape it with a backslash before the opening parenthesis: Following are valid examples ? 
+import Cocoa
+
+let constA = "Godzilla"
+let constB = 1000.00
+
+println("Value of \(constA) is more than \(constB) millions")
+ When we run the above program using playground, we get the following result ? 
+Value of Godzilla is more than 1000.0 millions
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

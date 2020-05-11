@@ -1,0 +1,514 @@
+Swift Optional Chaining Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Optional Chaining Advertisements Previous Page Next Page   The process of querying, calling properties, subscripts and methods on an optional that may be 'nil' is defined as optional chaining. Optional chaining return two values ? if the optional contains a 'value' then calling its related property, methods and subscripts returns values. if the optional contains a 'nil' value all its its related property, methods and subscripts returns nil. Since multiple queries to methods, properties and subscripts are grouped together failure to one chain will affect the entire chain and results in 'nil' value. Optional Chaining as an Alternative to Forced Unwrapping Optional chaining is specified after the optional value with '?' to call a property, method or subscript when the optional value returns some values. Optional Chaining '?' Access to methods,properties and subscriptsOptional Chaining '!' to force Unwrapping ? is placed after the optional value to call property, method or subscript ! is placed after the optional value to call property, method or subscript to force unwrapping of value Fails gracefully when the optional is 'nil' Forced unwrapping triggers a run time error when the optional is 'nil' Program for Optional Chaining with '!' 
+class ElectionPoll {
+   var candidate: Pollbooth?
+}
+class Pollbooth {   
+   var name = "MP"
+}
+
+let cand = ElectionPoll()
+
+let candname = cand.candidate!.name
+ When we run the above program using playground, we get the following result ? 
+fatal error: unexpectedly found nil while unwrapping an Optional value
+0  swift                    0x0000000103410b68 llvm::sys::PrintStackTrace(__sFILE*) + 40
+1  swift                    0x0000000103411054 SignalHandler(int) + 452
+2  libsystem_platform.dylib 0x00007fff9176af1a _sigtramp + 26
+3  libsystem_platform.dylib 0x000000000000000b _sigtramp + 1854492939
+4  libsystem_platform.dylib 0x00000001074a0214 _sigtramp + 1976783636
+5  swift                    0x0000000102a85c39 llvm::JIT::runFunction(llvm::Function*, std::__1::vector<llvm::GenericValue, std::__1::allocator<llvm::GenericValue> > const&) + 329
+6  swift                    0x0000000102d320b3 llvm::ExecutionEngine::runFunctionAsMain(llvm::Function*, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > > const&, char const* const*) + 1523
+7  swift                    0x000000010296e6ba swift::RunImmediately(swift::CompilerInstance&, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > > > const&, swift::IRGenOptions&, swift::SILOptions const&) + 1066
+8  swift                    0x000000010275764b frontend_main(llvm::ArrayRef<char const*>, char const*, void*) + 5275
+9  swift                    0x0000000102754a6d main + 1677
+10 libdyld.dylib            0x00007fff8bb9e5c9 start + 1
+11 libdyld.dylib            0x000000000000000c start + 1950751300
+Stack dump:
+0.	Program arguments: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -interpret - -target x86_64-apple-darwin14.0.0 -target-cpu core2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -module-name main 
+/bin/sh: line 47: 15672 Done                    cat  <<'SWIFT'
+import Foundation
+ The above program declares 'election poll' as class name and contains 'candidate' as membership function. The subclass is declared as 'poll booth' and 'name' as its membership function which is initialized as 'MP'. The call to the super class is initialized by creating an instance 'cand' with optional '!'. Since the values are not declared in its base class, 'nil' value is stored thereby returning a fatal error by the force unwrapping procedure. Program for Optional Chaining with '?' 
+class ElectionPoll {
+   var candidate: Pollbooth?
+}
+class Pollbooth {
+   var name = "MP"
+}
+
+let cand = ElectionPoll()
+   
+if let candname = cand.candidate?.name {
+   println("Candidate name is \(candname)")
+}else {
+   println("Candidate name cannot be retreived")
+}
+ When we run the above program using playground, we get the following result ? 
+Candidate name cannot be retreived
+ The program above declares 'election poll' as class name and contains 'candidate' as membership function. The subclass is declared as 'poll booth' and 'name' as its membership function which is initialized as 'MP'. The call to the super class is initialized by creating an instance 'cand' with optional '?'. Since the values are not declared in its base class 'nil' value is stored and printed in the console by the else handler block. Defining Model Classes for Optional Chaining & Accessing Properties Swift language also provides the concept of optional chaining, to declare more than one subclasses as model classes. This concept will be very useful to define complex models and to access the properties, methods and subscripts sub properties. 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var street: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let rectname = rectangle()
+
+if let rectarea = rectname.print?.cprint {
+   println("Area of rectangle is \(rectarea)")
+}  else {
+   println("Rectangle Area is not specified")
+}
+ When we run the above program using playground, we get the following result ? 
+Rectangle Area is not specified
+ Calling Methods Through Optional Chaining 
+class rectangle {
+   var print: circle?
+}
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("Area of Circle is: \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+
+if circname.print?.circleprint() != nil {
+   println("Area of circle is specified)")
+} else {
+   println("Area of circle is not specified")
+}
+ When we run the above program using playground, we get the following result ? 
+Area of circle is not specified
+ The function circleprint() declared inside the circle() sub class is called by creating an instance named 'circname'. The function will return a value if it contains some value otherwise it will return some user defined print message by checking the statement 'if circname.print?.circleprint() != nil'. Accessing Subscripts through Optional Chaining Optional chaining is used to set and retrieve a subscript value to validate whether call to that subscript returns a value. '?' is placed before the subscript braces to access the optional value on the particular subscript. Program 1 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+
+let circname = rectangle()
+
+if let radiusName = circname.print?[0].radiusname {
+   println("The first room name is \(radiusName).")
+} else {
+   println("Radius is not specified.")
+}
+ When we run the above program using playground, we get the following result ? 
+Radius is not specified.
+ In the above program the instance values for the membership function 'radiusName' is not specified. Hence program call to the function will return only else part whereas to return the values we have to define the values for the particular membership function. Program 2 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+if let radiusName = circname.print?[0].radiusname {
+   println("Radius is measured in \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+ When we run the above program using playground, we get the following result ? 
+Radius is measured in Units.
+ In the above program, the instance values for the membership function 'radiusName' is specified. Hence program call to the function will now return values. Accessing Subscripts of Optional Type 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+var area = ["Radius": [35, 45, 78, 101], "Circle": [90, 45, 56]]
+area["Radius"]?[1] = 78
+area["Circle"]?[1]--
+
+println(area["Radius"]?[0])
+println(area["Radius"]?[1])
+println(area["Radius"]?[2])
+println(area["Radius"]?[3])
+
+
+println(area["Circle"]?[0])
+println(area["Circle"]?[1])
+println(area["Circle"]?[2])
+ When we run the above program using playground, we get the following result ? 
+Optional(35)
+Optional(78)
+Optional(78)
+Optional(101)
+Optional(90)
+Optional(44)
+Optional(56)
+ The optional values for subscripts can be accessed by referring their subscript values. It can be accessed as subscript[0], subscript[1] etc. The default subscript values for 'radius' are first assigned as [35, 45, 78, 101] and for 'Circle' [90, 45, 56]]. Then the subscript values are changed as Radius[0] to 78 and Circle[1] to 45. Linking Multiple Levels of Chaining Multiple sub classes can also be linked with its super class methods, properties and subscripts by optional chaining. Multiple chaining of optional can be linked ? If retrieving type is not optional, optional chaining will return an optional value. For example if String through optional chaining it will return String? Value 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+
+if let radiusName = circname.print?[0].radiusname {
+   println("The first room name is \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+ When we run the above program using playground, we get the following result ? 
+Radius is not specified.
+ In the above program, the instance values for the membership function 'radiusName' is not specified. Hence, the program call to the function will return only else part whereas to return the values we have to define the values for the particular membership function. If the retrieving type is already optional, then optional chaining will also return an optional value. For example if String? Is accessed through optional chaining it will return String? Value. 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+if let radiusName = circname.print?[0].radiusname {
+   println("Radius is measured in \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+ When we run the above program using playground, we get the following result ? 
+Radius is measured in Units.
+ In the above program, the instance values for the membership function 'radiusName' is specified. Hence, the program call to the function will now return values. Chaining on Methods with Optional Return Values Optional chaining is used to access subclasses defined methods too. 
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("Area of Circle is: \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+if circname.print?.circleprint() != nil {
+   println("Area of circle is specified)")
+}else {
+   println("Area of circle is not specified")
+}
+ When we run the above program using playground, we get the following result ? 
+Area of circle is not specified
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

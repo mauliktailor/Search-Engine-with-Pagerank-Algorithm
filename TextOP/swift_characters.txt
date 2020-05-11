@@ -1,0 +1,51 @@
+Swift Characters Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Characters Advertisements Previous Page Next Page   A character in Swift is a single character String literal, addressed by the data type character. Take a look at the following example. It uses two Character constants ? 
+import Cocoa
+
+let char1: Character = "A"
+let char2: Character = "B"
+
+println("Value of char1 \(char1)")
+println("Value of char2 \(char2)")
+ When the above code is compiled and executed, it produces the following result ? 
+Value of char1 A
+Value of char2 B
+ If you try to store more than one character in a Character type variable or constant, then Swift will not allow that. Try to type the following example in Swift Playground and you will get an error even before compilation. 
+import Cocoa
+
+// Following is wrong in Swift
+let char: Character = "AB"
+
+println("Value of char \(char)")
+ Empty Character Variables It is not possible to create an empty Character variable or constant which will have an empty value. The following syntax is not possible ? 
+import Cocoa
+
+// Following is wrong in Swift
+let char1: Character = ""
+var char2: Character = ""
+
+println("Value of char1 \(char1)")
+println("Value of char2 \(char2)")
+ Accessing Characters from Strings As explained while discussing Swift's Strings, String represents a collection of Character values in a specified order. So we can access individual characters from the given String by iterating over that string with a for-in loop ? 
+import Cocoa
+
+for ch in "Hello" {
+   println(ch)
+}
+ When the above code is compiled and executed, it produces the following result ? 
+H
+e
+l
+l
+o
+ Concatenating Strings with Characters The following example demonstrates how a Swift's Character can be concatenated with Swift's String. 
+import Cocoa
+
+var varA:String = "Hello "
+let varB:Character = "G"
+
+varA.append( varB )
+
+println("Value of varC  =  \(varA)")
+ When the above code is compiled and executed, it produces the following result ? 
+Value of varC Hello G
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

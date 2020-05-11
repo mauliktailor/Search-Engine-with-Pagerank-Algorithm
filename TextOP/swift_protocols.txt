@@ -1,0 +1,394 @@
+Swift Protocols Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Protocols Advertisements Previous Page Next Page   Protocols provide a blueprint for Methods, properties and other requirements functionality. It is just described as a methods or properties skeleton instead of implementation. Methods and properties implementation can further be done by defining classes, functions and enumerations. Conformance of a protocol is defined as the methods or properties satisfying the requirements of the protocol. Syntax Protocols also follow the similar syntax as that of classes, structures, and enumerations ? 
+protocol SomeProtocol {
+   // protocol definition 
+}
+ Protocols are declared after the class, structure or enumeration type names. Single and Multiple protocol declarations are also possible. If multiple protocols are defined they have to be separated by commas. 
+struct SomeStructure: Protocol1, Protocol2 {
+   // structure definition 
+}
+ When a protocol has to be defined for super class, the protocol name should follow the super class name with a comma. 
+class SomeClass: SomeSuperclass, Protocol1, Protocol2 {
+   // class definition 
+}
+ Property and Method Requirements Protocol is used to specify particular class type property or instance property. It just specifies the type or instance property alone rather than specifying whether it is a stored or computed property. Also, it is used to specify whether the property is 'gettable' or 'settable'. Property requirements are declared by 'var' keyword as property variables. {get set} is used to declare gettable and settable properties after their type declaration. Gettable is mentioned by {get} property after their type declaration. 
+protocol classa {
+   
+   var marks: Int { get set }
+   var result: Bool { get }
+   
+   func attendance() -> String
+   func markssecured() -> String
+
+}
+
+protocol classb: classa {
+
+   var present: Bool { get set }
+   var subject: String { get set }
+   var stname: String { get set }
+   
+}
+
+class classc: classb {
+   var marks = 96
+   let result = true
+   var present = false
+   var subject = "Swift Protocols"
+   var stname = "Protocols"
+
+   func attendance() -> String {
+      return "The \(stname) has secured 99% attendance"
+   }
+
+   func markssecured() -> String {
+      return "\(stname) has scored \(marks)"
+   }
+}
+
+let studdet = classc()
+studdet.stname = "Swift"
+studdet.marks = 98
+studdet.markssecured()
+
+println(studdet.marks)
+println(studdet.result)
+println(studdet.present)
+println(studdet.subject)
+println(studdet.stname)
+ When we run the above program using playground, we get the following result ? 
+98
+true
+false
+Swift Protocols
+Swift
+ Mutating Method Requirements 
+protocol daysofaweek {
+   mutating func print()
+}
+
+enum days: daysofaweek {
+   case sun, mon, tue, wed, thurs, fri, sat
+   mutating func print() {
+      switch self {
+      case sun:
+         self = sun
+         println("Sunday")
+      case mon:
+         self = mon
+         println("Monday")
+      case tue:
+         self = tue
+         println("Tuesday")
+      case wed:
+         self = wed
+         println("Wednesday")
+      case mon:
+         self = thurs
+         println("Thursday")
+      case tue:
+         self = fri
+         println("Friday")
+      case sat:
+         self = sat
+         println("Saturday")
+      default:
+         println("NO Such Day")
+      }
+   }
+}
+
+var res = days.wed
+res.print()
+ When we run the above program using playground, we get the following result ? 
+Wednesday
+ Initializer Requirements Swing allows the user to initialize protocols to follow type conformance similar to that of normal initializers. Syntax 
+protocol SomeProtocol {
+   init(someParameter: Int)
+}
+ For example 
+protocol tcpprotocol {
+   init(aprot: Int)
+}
+ Class Implementations of Protocol Initializer Requirements Designated or convenience initializer allows the user to initialize a protocol to conform its standard by the reserved 'required' keyword. 
+class SomeClass: SomeProtocol {
+   required init(someParameter: Int) {
+      // initializer implementation statements
+   }
+}
+
+protocol tcpprotocol {
+   init(aprot: Int)
+}
+
+class tcpClass: tcpprotocol {
+   required init(aprot: Int) {}
+}
+ Protocol conformance is ensured on all subclasses for explicit or inherited implementation by 'required' modifier. When a subclass overrides its super class initialization requirement it is specified by the 'override' modifier keyword. 
+protocol tcpprotocol {
+   init(no1: Int)
+}
+
+class mainClass {
+   var no1: Int // local storage
+   init(no1: Int) {
+      self.no1 = no1 // initialization
+   }
+}
+
+class subClass: mainClass, tcpprotocol {
+   var no2: Int
+   init(no1: Int, no2 : Int) {
+      self.no2 = no2
+      super.init(no1:no1)
+   }
+   // Requires only one parameter for convenient method
+   required override convenience init(no1: Int)  {
+      self.init(no1:no1, no2:0)
+   }
+}
+let res = mainClass(no1: 20)
+let print = subClass(no1: 30, no2: 50)
+
+println("res is: \(res.no1)")
+println("res is: \(print.no1)")
+println("res is: \(print.no2)")
+ When we run the above program using playground, we get the following result ? 
+res is: 20
+res is: 30
+res is: 50
+ Protocols as Types Instead of implementing functionalities in a protocol they are used as types for functions, classes, methods etc. Protocols can be accessed as types in ? Function, method or initialize as a parameter or return type. Constant, variable or property. Arrays, dictionaries or other containers as items. 
+protocol Generator {
+   typealias members
+   func next() -> members?
+}
+
+var items = [10,20,30].generate()
+while let x = items.next() {
+   println(x)
+}
+
+for lists in map([1,2,3], {i in i*5}) {
+   println(lists)
+}
+
+println([100,200,300])
+println(map([1,2,3], {i in i*10}))
+ When we run the above program using playground, we get the following result ? 
+10
+20
+30
+5
+10
+15
+[100, 200, 300]
+[10, 20, 30]
+ Adding Protocol Conformance with an Extension Existing type can be adopted and conformed to a new protocol by making use of extensions. New properties, methods and subscripts can be added to existing types with the help of extensions. 
+protocol AgeClasificationProtocol {
+   var age: Int { get }
+   func agetype() -> String
+}
+
+class Person {
+   let firstname: String
+   let lastname: String
+   var age: Int
+   init(firstname: String, lastname: String) {
+      self.firstname = firstname
+      self.lastname = lastname
+      self.age = 10
+   }
+}
+
+extension Person : AgeClasificationProtocol {
+   func fullname() -> String {
+      var c: String
+      c = firstname + " " + lastname
+      return c
+   }
+
+   func agetype() -> String {
+      switch age {
+      case 0...2:
+         return "Baby"
+      case 2...12:
+         return "Child"
+      case 13...19:
+         return "Teenager"
+      case let x where x > 65:
+         return "Elderly"
+      default:
+         return "Normal"
+      }
+   }
+}
+ Protocol Inheritance Swift allows protocols to inherit properties from its defined properties. It is similar to that of class inheritance, but with the choice of listing multiple inherited protocols separated by commas. 
+protocol classa {
+   var no1: Int { get set }
+   func calc(sum: Int)
+}
+
+protocol result {
+   func print(target: classa)
+}
+
+class student2: result {
+   func print(target: classa) {
+      target.calc(1)
+   }
+}
+
+class classb: result {
+   func print(target: classa) {
+      target.calc(5)
+   }
+}
+
+class student: classa {
+   var no1: Int = 10
+   
+   func calc(sum: Int) {
+      no1 -= sum
+      println("Student attempted \(sum) times to pass")
+      
+      if no1 <= 0 {
+         println("Student is absent for exam")
+      }
+   }
+}
+
+class Player {
+   var stmark: result!
+   
+   init(stmark: result) {
+      self.stmark = stmark
+   }
+   
+   func print(target: classa) {
+      stmark.print(target)
+   }
+}
+
+var marks = Player(stmark: student2())
+var marksec = student()
+
+marks.print(marksec)
+marks.print(marksec)
+marks.print(marksec)
+marks.stmark = classb()
+marks.print(marksec)
+marks.print(marksec)
+marks.print(marksec)
+ When we run the above program using playground, we get the following result ? 
+Student attempted 1 times to pass
+Student attempted 1 times to pass
+Student attempted 1 times to pass
+Student attempted 5 times to pass
+Student attempted 5 times to pass
+Student is absent for exam
+Student attempted 5 times to pass
+Student is absent for exam
+ Class Only Protocols When protocols are defined and the user wants to define protocol with classes it should be added by defining class first followed by protocol's inheritance list. 
+protocol tcpprotocol {
+   init(no1: Int)
+}
+
+class mainClass {
+   var no1: Int // local storage
+   init(no1: Int) {
+      self.no1 = no1 // initialization
+   }
+}
+
+class subClass: mainClass, tcpprotocol {
+   var no2: Int
+   init(no1: Int, no2 : Int) {
+      self.no2 = no2
+      super.init(no1:no1)
+   }
+   // Requires only one parameter for convenient method
+   required override convenience init(no1: Int)  {
+      self.init(no1:no1, no2:0)
+   }
+}
+
+let res = mainClass(no1: 20)
+let print = subClass(no1: 30, no2: 50)
+
+println("res is: \(res.no1)")
+println("res is: \(print.no1)")
+println("res is: \(print.no2)")
+ When we run the above program using playground, we get the following result ? 
+res is: 20
+res is: 30
+res is: 50
+ Protocol Composition Swift allows multiple protocols to be called at once with the help of protocol composition. Syntax 
+protocol<SomeProtocol, AnotherProtocol>
+ Example 
+protocol stname {
+   var name: String { get }
+}
+
+protocol stage {
+   var age: Int { get }
+}
+
+struct Person: stname, stage {
+   var name: String
+   var age: Int
+}
+
+func print(celebrator: protocol<stname, stage>) {
+   println("\(celebrator.name) is \(celebrator.age) years old")
+}
+
+let studname = Person(name: "Priya", age: 21)
+print(studname)
+
+let stud = Person(name: "Rehan", age: 29)
+print(stud)
+
+let student = Person(name: "Roshan", age: 19)
+print(student)
+ When we run the above program using playground, we get the following result ? 
+Priya is 21 years old
+Rehan is 29 years old
+Roshan is 19 years old
+ Checking for Protocol Conformance Protocol conformance is tested by 'is' and 'as' operators similar to that of type casting. The is operator returns true if an instance conforms to protocol standard and returns false if it fails. The as? version of the downcast operator returns an optional value of the protocol's type, and this value is nil if the instance does not conform to that protocol. The as version of the downcast operator forces the downcast to the protocol type and triggers a runtime error if the downcast does not succeed. 
+import Foundation
+
+@objc protocol rectangle {
+   var area: Double { get }
+}
+
+@objc class Circle: rectangle {
+   let pi = 3.1415927
+   var radius: Double
+   var area: Double { return pi * radius * radius }
+   init(radius: Double) { self.radius = radius }
+}
+
+@objc class result: rectangle {
+   var area: Double
+   init(area: Double) { self.area = area }
+}
+
+
+class sides {
+   var rectsides: Int
+   init(rectsides: Int) { self.rectsides = rectsides }
+}
+
+let objects: [AnyObject] = [Circle(radius: 2.0),result(area: 198),sides(rectsides: 4)]
+
+for object in objects {
+   if let objectWithArea = object as? rectangle {
+      println("Area is \(objectWithArea.area)")
+   } else {
+      println("Rectangle area is not defined")
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Area is 12.5663708
+Area is 198.0
+Rectangle area is not defined
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

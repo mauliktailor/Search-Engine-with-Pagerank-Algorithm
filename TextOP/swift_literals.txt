@@ -1,0 +1,25 @@
+Swift Literals Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Literals Advertisements Previous Page Next Page   A literal is the source code representation of a value of an integer, floating-point number, or string type. The following are examples of literals ? 
+42               // Integer literal
+3.14159          // Floating-point literal
+"Hello, world!"  // String literal
+ Integer Literals An integer literal can be a decimal, binary, octal, or hexadecimal constant. Binary literals begin with 0b, octal literals begin with 0o, and hexadecimal literals begin with 0x and nothing for decimal. Here are some examples of integer literals ? 
+let decimalInteger = 17           // 17 in decimal notation
+let binaryInteger = 0b10001       // 17 in binary notation
+let octalInteger = 0o21           // 17 in octal notation
+let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+ Floating-point Literals A floating-point literal has an integer part, a decimal point, a fractional part, and an exponent part. You can represent floating point literals either in decimal form or hexadecimal form. Decimal floating-point literals consist of a sequence of decimal digits followed by either a decimal fraction, a decimal exponent, or both. Hexadecimal floating-point literals consist of a 0x prefix, followed by an optional hexadecimal fraction, followed by a hexadecimal exponent. Here are some examples of floating-point literals ? 
+let decimalDouble = 12.1875
+let exponentDouble = 1.21875e1
+let hexadecimalDouble = 0xC.3p0
+ String Literals A string literal is a sequence of characters surrounded by double quotes, with the following form ? 
+"characters"
+ String literals cannot contain an unescaped double quote ("), an unescaped backslash (\), a carriage return, or a line feed. Special characters can be included in string literals using the following escape sequences ? Escape sequence Meaning \0 Null Character \\ \character \b Backspace \f Form feed \n Newline \r Carriage return \t Horizontal tab \v Vertical tab \' Single Quote \" Double Quote \000 Octal number of one to three digits \xhh... Hexadecimal number of one or more digits The following example shows how to use a few string literals ? 
+import Cocoa
+
+let stringL = "Hello\tWorld\n\nHello\'Swift\'"
+println(stringL)
+ When we run the above program using playground, we get the following result ? 
+Hello	World
+
+Hello'Swift'
+ Boolean Literals There are three Boolean literals and they are part of standard Swift keywords ? A value of true representing true. A value of false representing false. A value of nil representing no value. Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

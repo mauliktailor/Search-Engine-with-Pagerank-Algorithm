@@ -1,0 +1,1023 @@
+<!doctype html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_optional_chaining.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Swift Optional Chaining</title>
+<meta name="description" content="Swift Optional Chaining - Learn Swift programming on iOS in simple and easy steps starting from its overview, basic syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<meta name="keywords" content="Swift, Tutorial, beginners, overview, basic Syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<base  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="471319149685276" />
+<meta property="og:site_name" content="www.tutorialspoint.com" />
+<meta name="robots" content="index, follow"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="../theme/js/script-min-v4.js"></script>
+<link rel="stylesheet" href="../theme/css/style-min5e1f.css?v=2">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #f05c02 url(../images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #f05c02 !important;}
+.submenu-item{ border-bottom: 2px solid #f05c02 !important; border-top: 2px solid #f05c02 !important }
+.ace_scroller{overflow: auto!important;}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img  src="../images/loading-cg.gif" alt="" width="70" height="70" />
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="../index-2.html" title="tutorialspoint">
+      <img alt="tutorialspoint" src="images/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="../about/about_careers.html" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDFiles</a> </li>
+            <li> <a href="../whiteboard.html"><img src="../theme/css/icons/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="../netmeeting.html"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="../online_dev_tools.html"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="../articles/index.html"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="../index-2.html"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../codingground.html"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../tutor_connect/index.html"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../videotutorials/index.html"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="images/swift-mini-logo.jpg" alt="Swift Tutorial" />
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Tutorial</li>
+<li><a href="index.html">Swift - Home</a></li>
+<li><a href="swift_overview.html">Swift - Overview</a></li>
+<li><a href="swift_environment.html">Swift - Environment</a></li>
+<li><a href="swift_basic_syntax.html">Swift - Basic Syntax</a></li>
+<li><a href="swift_data_types.html">Swift - Data Types</a></li>
+<li><a href="swift_variables.html">Swift - Variables</a></li>
+<li><a href="swift_optionals.html">Swift - Optionals</a></li>
+<li><a href="swift_constants.html">Swift - Constants</a></li>
+<li><a href="swift_literals.html">Swift - Literals</a></li>
+<li><a href="swift_operators.html">Swift - Operators</a></li>
+<li><a href="swift_decision_making.html">Swift - Decision Making</a></li>
+<li><a href="swift_loops.html">Swift - Loops</a></li>
+<li><a href="swift_strings.html">Swift - Strings</a></li>
+<li><a href="swift_characters.html">Swift - Characters</a></li>
+<li><a href="swift_arrays.html">Swift - Arrays</a></li>
+<li><a href="swift_dictionaries.html">Swift - Dictionaries</a></li>
+<li><a href="swift_functions.html">Swift - Functions</a></li>
+<li><a href="swift_closures.html">Swift - Closures</a></li>
+<li><a href="swift_enumerations.html">Swift - Enumerations</a></li>
+<li><a href="swift_structures.html">Swift - Structures</a></li>
+<li><a href="swift_classes.html">Swift - Classes</a></li>
+<li><a href="swift_properties.html">Swift - Properties</a></li>
+<li><a href="swift_methods.html">Swift - Methods</a></li>
+<li><a href="swift_subscripts.html">Swift - Subscripts</a></li>
+<li><a href="swift_inheritance.html">Swift - Inheritance</a></li>
+<li><a href="swift_initialization.html">Swift - Initialization</a></li>
+<li><a href="swift_deinitialization.html">Swift - Deinitialization</a></li>
+<li><a href="swift_arc_overview.html">Swift - ARC Overview</a></li>
+<li><a href="swift_optional_chaining.html">Swift - Optional Chaining</a></li>
+<li><a href="swift_type_casting.html">Swift - Type Casting</a></li>
+<li><a href="swift_extensions.html">Swift - Extensions</a></li>
+<li><a href="swift_protocols.html">Swift - Protocols</a></li>
+<li><a href="swift_generics.html">Swift - Generics</a></li>
+<li><a href="swift_access_control.html">Swift - Access Control</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Useful Resources</li>
+<li><a href="swift_quick_guide.html">Swift - Quick Guide</a></li>
+<li><a href="swift_useful_resources.html">Swift - Useful Resources</a></li>
+<li><a href="swift_discussion.html">Swift - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="../developers_best_practices/index.html">Developer's Best Practices</a></li>
+<li><a target="_top" href="../questions_and_answers.html">Questions and Answers</a></li>
+<li><a target="_top" href="../effective_resume_writing.html">Effective Resume Writing</a></li>
+<li><a target="_top" href="../hr_interview_questions/index.html">HR Interview Questions</a></li>
+<li><a target="_top" href="../computer_glossary.html">Computer Glossary</a></li>
+<li><a target="_top" href="../computer_whoiswho.html">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Swift - Optional Chaining</h1>
+<hr />
+<div class="topgooglead">
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt"> 
+</script>
+</div>
+<hr />
+<div class="pre-btn">
+<a href="swift_arc_overview.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_type_casting.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>The process of querying, calling properties, subscripts and methods on an optional that may be 'nil' is defined as optional chaining. Optional chaining return two values &minus;</p>
+<ul class="list">
+<li><p>if the optional contains a 'value' then calling its related property, methods and subscripts returns values.</p></li>
+<li><p>if the optional contains a 'nil' value all its its related property, methods and subscripts returns nil.</p></li>
+</ul>
+<p>Since multiple queries to methods, properties and subscripts are grouped together failure to one chain will affect the entire chain and results in 'nil' value.</p>
+<h2>Optional Chaining as an Alternative to Forced Unwrapping</h2>
+<p>Optional chaining is specified after the optional value with '?' to call a property, method or subscript when the optional value returns some values.</p>
+<table class="table table-bordered">
+<tr>
+<td>Optional Chaining '?'</td>
+<td>Access to methods,properties and subscriptsOptional Chaining '!' to force Unwrapping</td>
+</tr>
+<tr>
+<td>? is placed after the optional value to call property, method or subscript</td>
+<td>! is placed after the optional value to call property, method or subscript to force unwrapping of value</td>
+</tr>
+<tr>
+<td>Fails gracefully when the optional is 'nil'</td>
+<td>Forced unwrapping triggers a run time error when the optional is 'nil'</td>
+</tr>
+</table>
+<h3>Program for Optional Chaining with '!'</h3>
+<pre class="prettyprint notranslate tryit">
+class ElectionPoll {
+   var candidate: Pollbooth?
+}
+class Pollbooth {   
+   var name = "MP"
+}
+
+let cand = ElectionPoll()
+
+let candname = cand.candidate!.name
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+fatal error: unexpectedly found nil while unwrapping an Optional value
+0  swift                    0x0000000103410b68 llvm::sys::PrintStackTrace(__sFILE*) + 40
+1  swift                    0x0000000103411054 SignalHandler(int) + 452
+2  libsystem_platform.dylib 0x00007fff9176af1a _sigtramp + 26
+3  libsystem_platform.dylib 0x000000000000000b _sigtramp + 1854492939
+4  libsystem_platform.dylib 0x00000001074a0214 _sigtramp + 1976783636
+5  swift                    0x0000000102a85c39 llvm::JIT::runFunction(llvm::Function*, std::__1::vector&lt;llvm::GenericValue, std::__1::allocator&lt;llvm::GenericValue&gt; &gt; const&amp;) + 329
+6  swift                    0x0000000102d320b3 llvm::ExecutionEngine::runFunctionAsMain(llvm::Function*, std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; const&, char const* const*) + 1523
+7  swift                    0x000000010296e6ba swift::RunImmediately(swift::CompilerInstance&, std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; const&, swift::IRGenOptions&, swift::SILOptions const&) + 1066
+8  swift                    0x000000010275764b frontend_main(llvm::ArrayRef&lt;char const*&gt;, char const*, void*) + 5275
+9  swift                    0x0000000102754a6d main + 1677
+10 libdyld.dylib            0x00007fff8bb9e5c9 start + 1
+11 libdyld.dylib            0x000000000000000c start + 1950751300
+Stack dump:
+0.	Program arguments: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -interpret - -target x86_64-apple-darwin14.0.0 -target-cpu core2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -module-name main 
+/bin/sh: line 47: 15672 Done                    cat  &lt;&lt;'SWIFT'
+import Foundation
+</pre>
+<p>The above program declares 'election poll' as class name and contains 'candidate' as membership function. The subclass is declared as 'poll booth' and 'name' as its membership function which is initialized as 'MP'. The call to the super class is initialized by creating an instance 'cand' with optional '!'. Since the values are not declared in its base class, 'nil' value is stored thereby returning a fatal error by the force unwrapping procedure.</p>
+<h3>Program for Optional Chaining with '?'</h3>
+<pre class="prettyprint notranslate tryit">
+class ElectionPoll {
+   var candidate: Pollbooth?
+}
+class Pollbooth {
+   var name = "MP"
+}
+
+let cand = ElectionPoll()
+   
+if let candname = cand.candidate?.name {
+   println("Candidate name is \(candname)")
+}else {
+   println("Candidate name cannot be retreived")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Candidate name cannot be retreived
+</pre>
+<p>The program above declares 'election poll' as class name and contains 'candidate' as membership function. The subclass is declared as 'poll booth' and 'name' as its membership function which is initialized as 'MP'. The call to the super class is initialized by creating an instance 'cand' with optional '?'. Since the values are not declared in its base class 'nil' value is stored and printed in the console by the else handler block.</p>
+<h2>Defining Model Classes for Optional Chaining &amp; Accessing Properties</h2>
+<p>Swift language also provides the concept of optional chaining, to declare more than one subclasses as model classes. This concept will be very useful to define complex models and to access the properties, methods and subscripts sub properties.</p>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var street: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let rectname = rectangle()
+
+if let rectarea = rectname.print?.cprint {
+   println("Area of rectangle is \(rectarea)")
+}  else {
+   println("Rectangle Area is not specified")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Rectangle Area is not specified
+</pre>
+<h2>Calling Methods Through Optional Chaining</h2>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("Area of Circle is: \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+
+if circname.print?.circleprint() != nil {
+   println("Area of circle is specified)")
+} else {
+   println("Area of circle is not specified")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Area of circle is not specified
+</pre>
+<p>The function circleprint() declared inside the circle() sub class is called by creating an instance named 'circname'. The function will return a value if it contains some value otherwise it will return some user defined print message by checking the statement 'if circname.print?.circleprint() != nil'.</p>
+<h2>Accessing Subscripts through Optional Chaining</h2>
+<p>Optional chaining is used to set and retrieve a subscript value to validate whether call to that subscript returns a value. '?' is placed before the subscript braces to access the optional value on the particular subscript.</p>
+<h3>Program 1</h3>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+
+let circname = rectangle()
+
+if let radiusName = circname.print?[0].radiusname {
+   println("The first room name is \(radiusName).")
+} else {
+   println("Radius is not specified.")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Radius is not specified.
+</pre>
+<p>In the above program the instance values for the membership function 'radiusName' is not specified. Hence program call to the function will return only else part whereas to return the values we have to define the values for the particular membership function.</p>
+<h3>Program 2</h3>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+if let radiusName = circname.print?[0].radiusname {
+   println("Radius is measured in \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Radius is measured in Units.
+</pre>
+<p>In the above program, the instance values for the membership function 'radiusName' is specified. Hence program call to the function will now return values.</p>
+<h2>Accessing Subscripts of Optional Type</h2>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+var area = ["Radius": [35, 45, 78, 101], "Circle": [90, 45, 56]]
+area["Radius"]?[1] = 78
+area["Circle"]?[1]--
+
+println(area["Radius"]?[0])
+println(area["Radius"]?[1])
+println(area["Radius"]?[2])
+println(area["Radius"]?[3])
+
+
+println(area["Circle"]?[0])
+println(area["Circle"]?[1])
+println(area["Circle"]?[2])
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Optional(35)
+Optional(78)
+Optional(78)
+Optional(101)
+Optional(90)
+Optional(44)
+Optional(56)
+</pre>
+<p>The optional values for subscripts can be accessed by referring their subscript values. It can be accessed as subscript[0], subscript[1] etc. The default subscript values for 'radius' are first assigned as [35, 45, 78, 101] and for 'Circle' [90, 45, 56]]. Then the subscript values are changed as Radius[0] to 78 and Circle[1] to 45.</p>
+<h2>Linking Multiple Levels of Chaining</h2>
+<p>Multiple sub classes can also be linked with its super class methods, properties and subscripts by optional chaining.</p>
+<p>Multiple chaining of optional can be linked &minus;</p>
+<p>If retrieving type is not optional, optional chaining will return an optional value. For example if String through optional chaining it will return String? Value</p>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+
+if let radiusName = circname.print?[0].radiusname {
+   println("The first room name is \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Radius is not specified.
+</pre>
+<p>In the above program, the instance values for the membership function 'radiusName' is not specified. Hence, the program call to the function will return only else part whereas to return the values we have to define the values for the particular membership function.</p>
+<p>If the retrieving type is already optional, then optional chaining will also return an optional value. For example if String? Is accessed through optional chaining it will return String? Value.</p>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+   
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("The number of rooms is \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+circname.print?[0] = radius(radiusname: "Diameter")
+
+let printing = circle()
+printing.area.append(radius(radiusname: "Units"))
+printing.area.append(radius(radiusname: "Meter"))
+circname.print = printing
+
+if let radiusName = circname.print?[0].radiusname {
+   println("Radius is measured in \(radiusName).")
+}else {
+   println("Radius is not specified.")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Radius is measured in Units.
+</pre>
+<p>In the above program, the instance values for the membership function 'radiusName' is specified. Hence, the program call to the function will now return values.</p>
+<h2>Chaining on Methods with Optional Return Values</h2>
+<p>Optional chaining is used to access subclasses defined methods too.</p>
+<pre class="prettyprint notranslate tryit">
+class rectangle {
+   var print: circle?
+}
+
+class circle {
+   var area = [radius]()
+   var cprint: Int {
+      return area.count
+   }
+
+   subscript(i: Int) -> radius {
+      get {
+         return area[i]
+      }set {
+         area[i] = newValue
+      }
+   }
+   func circleprint() {
+      println("Area of Circle is: \(cprint)")
+   }
+   var rectarea: circumference?
+}
+
+class radius {
+   let radiusname: String
+   init(radiusname: String) { self.radiusname = radiusname }
+}
+
+class circumference {
+   var circumName: String?
+   var circumNumber: String?
+   var circumarea: String?
+   
+   func buildingIdentifier() -> String? {
+      if circumName != nil {
+         return circumName
+      }else if circumNumber != nil {
+         return circumNumber
+      }else {
+         return nil
+      }
+   }
+}
+
+let circname = rectangle()
+if circname.print?.circleprint() != nil {
+   println("Area of circle is specified)")
+}else {
+   println("Area of circle is not specified")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Area of circle is not specified
+</pre>
+<hr />
+<div class="pre-btn">
+<a href="swift_arc_overview.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="../cgi-bin/printpage.html" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_type_casting.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr />
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/swift/swift_optional_chaining.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/facebookIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/swift/swift_optional_chaining.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/twitterIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/swift/swift_optional_chaining.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/linkedinIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/swift/swift_optional_chaining.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/googlePlusIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/swift/swift_optional_chaining.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/StumbleUponIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/swift/swift_optional_chaining.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/reddit.jpg" alt="img" />
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="../index-2.html" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="../scripts/img/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="../about/tutorials_writing.html">Write for us</a></li>
+         <li><a href="../about/faq.html">FAQ's</a></li>
+         <li><a href="../about/about_helping.html">Helping</a></li>
+         <li><a href="../about/contact_us.html">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>&copy; Copyright 2017. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="../theme/js/custom-min7b30.js?v=4"></script>
+<script src="../../www.google-analytics.com/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="../theme/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('try_swift.html');
+   tryit.compile();
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Swift Optional Chaining",
+    "name": "Swift Optional Chaining",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/swift/swift_optional_chaining.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/swift/images/swift-mini-logo.jpg",
+        "width": 255,
+        "height": 194
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "July 23 2017 03:34:49.",
+    "dateModified": "July 23 2017 03:34:49.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "The process of querying, calling properties, subscripts and methods on an optional that may be 'nil' is defined as optional chaining. Optional chaining return two values \u2212..."
+}
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Computer Programming",
+                "@id": "https://www.tutorialspoint.com/computer_programming_tutorials.htm"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "Swift",
+                "@id": "https://www.tutorialspoint.com/swift"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+                "name": "Swift - Optional Chaining"
+            }
+        }
+    ]
+}
+</script></div>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_optional_chaining.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:04 GMT -->
+</html>

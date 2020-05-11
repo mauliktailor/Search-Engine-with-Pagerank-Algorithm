@@ -1,0 +1,487 @@
+<!doctype html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_loops.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Swift Loops</title>
+<meta name="description" content="Swift Loops - Learn Swift programming on iOS in simple and easy steps starting from its overview, basic syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<meta name="keywords" content="Swift, Tutorial, beginners, overview, basic Syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<base  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="471319149685276" />
+<meta property="og:site_name" content="www.tutorialspoint.com" />
+<meta name="robots" content="index, follow"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="../theme/js/script-min-v4.js"></script>
+<link rel="stylesheet" href="../theme/css/style-min5e1f.css?v=2">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #f05c02 url(../images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #f05c02 !important;}
+.submenu-item{ border-bottom: 2px solid #f05c02 !important; border-top: 2px solid #f05c02 !important }
+.ace_scroller{overflow: auto!important;}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img  src="../images/loading-cg.gif" alt="" width="70" height="70" />
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="../index-2.html" title="tutorialspoint">
+      <img alt="tutorialspoint" src="images/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="../about/about_careers.html" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDFiles</a> </li>
+            <li> <a href="../whiteboard.html"><img src="../theme/css/icons/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="../netmeeting.html"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="../online_dev_tools.html"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="../articles/index.html"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="../index-2.html"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../codingground.html"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../tutor_connect/index.html"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../videotutorials/index.html"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="images/swift-mini-logo.jpg" alt="Swift Tutorial" />
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Tutorial</li>
+<li><a href="index.html">Swift - Home</a></li>
+<li><a href="swift_overview.html">Swift - Overview</a></li>
+<li><a href="swift_environment.html">Swift - Environment</a></li>
+<li><a href="swift_basic_syntax.html">Swift - Basic Syntax</a></li>
+<li><a href="swift_data_types.html">Swift - Data Types</a></li>
+<li><a href="swift_variables.html">Swift - Variables</a></li>
+<li><a href="swift_optionals.html">Swift - Optionals</a></li>
+<li><a href="swift_constants.html">Swift - Constants</a></li>
+<li><a href="swift_literals.html">Swift - Literals</a></li>
+<li><a href="swift_operators.html">Swift - Operators</a></li>
+<li><a href="swift_decision_making.html">Swift - Decision Making</a></li>
+<li><a href="swift_loops.html">Swift - Loops</a></li>
+<li><a href="swift_strings.html">Swift - Strings</a></li>
+<li><a href="swift_characters.html">Swift - Characters</a></li>
+<li><a href="swift_arrays.html">Swift - Arrays</a></li>
+<li><a href="swift_dictionaries.html">Swift - Dictionaries</a></li>
+<li><a href="swift_functions.html">Swift - Functions</a></li>
+<li><a href="swift_closures.html">Swift - Closures</a></li>
+<li><a href="swift_enumerations.html">Swift - Enumerations</a></li>
+<li><a href="swift_structures.html">Swift - Structures</a></li>
+<li><a href="swift_classes.html">Swift - Classes</a></li>
+<li><a href="swift_properties.html">Swift - Properties</a></li>
+<li><a href="swift_methods.html">Swift - Methods</a></li>
+<li><a href="swift_subscripts.html">Swift - Subscripts</a></li>
+<li><a href="swift_inheritance.html">Swift - Inheritance</a></li>
+<li><a href="swift_initialization.html">Swift - Initialization</a></li>
+<li><a href="swift_deinitialization.html">Swift - Deinitialization</a></li>
+<li><a href="swift_arc_overview.html">Swift - ARC Overview</a></li>
+<li><a href="swift_optional_chaining.html">Swift - Optional Chaining</a></li>
+<li><a href="swift_type_casting.html">Swift - Type Casting</a></li>
+<li><a href="swift_extensions.html">Swift - Extensions</a></li>
+<li><a href="swift_protocols.html">Swift - Protocols</a></li>
+<li><a href="swift_generics.html">Swift - Generics</a></li>
+<li><a href="swift_access_control.html">Swift - Access Control</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Useful Resources</li>
+<li><a href="swift_quick_guide.html">Swift - Quick Guide</a></li>
+<li><a href="swift_useful_resources.html">Swift - Useful Resources</a></li>
+<li><a href="swift_discussion.html">Swift - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="../developers_best_practices/index.html">Developer's Best Practices</a></li>
+<li><a target="_top" href="../questions_and_answers.html">Questions and Answers</a></li>
+<li><a target="_top" href="../effective_resume_writing.html">Effective Resume Writing</a></li>
+<li><a target="_top" href="../hr_interview_questions/index.html">HR Interview Questions</a></li>
+<li><a target="_top" href="../computer_glossary.html">Computer Glossary</a></li>
+<li><a target="_top" href="../computer_whoiswho.html">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Swift - Loops</h1>
+<hr />
+<div class="topgooglead">
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt"> 
+</script>
+</div>
+<hr />
+<div class="pre-btn">
+<a href="swift_decision_making.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_strings.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>There may be a situation when you need to execute a block of code several number of times. In general statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on.</p>
+<p>Programming languages provide various control structures that allow for more complicated execution paths.</p>
+<p>A loop statement allows us to execute a statement or group of statements multiple times. Following is the general from of a loop statement in most of the programming languages &minus;</p>
+<img src="images/loop_architecture.jpg" alt="Loop Architecture" />
+<p>Swift programming language provides the following kinds of loop to handle looping requirements. Click the following links to check their detail.</p>
+<table class="table table-bordered">
+<tr>
+<th>S.No</th>
+<th style="text-align:center;">Loop Type &amp; Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="swift_for_in.html">for-in</a>
+<p>This loop performs a set of statements for each item in a range, sequence, collection, or progression.</p></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="swift_for_loop.html">for loop</a>
+<p>Executes a sequence of statements multiple times and abbreviates the code that manages the loop variable.</p></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="swift_while_loop.html">while loop</a>
+<p>Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.</p></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="swift_do_while_loop.html">do...while loop</a>
+<p>Like a while statement, except that it tests the condition at the end of the loop body.</p></td>
+</tr>
+</table>
+<h2>Loop Control Statements</h2>
+<p>Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed.</p>
+<p>Swift supports the following control statements. Click the following links to check their detail.</p>
+<table class="table table-bordered">
+<tr>
+<th>S.No</th>
+<th style="text-align:center;">Control Statement &amp; Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="swift_continue_statement.html">continue statement</a>
+<p>This statement tells a loop to stop what it is doing and start again at the beginning of the next iteration through the loop.</p></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="swift_break_statement.html">break statement</a><p>Terminates the <b>loop</b> statement and transfers execution to the statement immediately following the loop.</p></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="swift_fallthrough_statement.html">fallthrough statement</a>
+<p>The fallthrough statement simulates the behavior of swift switch to C-style switch.</p></td>
+</tr>
+</table>
+<hr />
+<div class="pre-btn">
+<a href="swift_decision_making.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="../cgi-bin/printpage.html" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_strings.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr />
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/swift/swift_loops.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/facebookIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/swift/swift_loops.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/twitterIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/swift/swift_loops.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/linkedinIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/swift/swift_loops.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/googlePlusIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/swift/swift_loops.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/StumbleUponIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/swift/swift_loops.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/reddit.jpg" alt="img" />
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="../index-2.html" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="../scripts/img/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="../about/tutorials_writing.html">Write for us</a></li>
+         <li><a href="../about/faq.html">FAQ's</a></li>
+         <li><a href="../about/about_helping.html">Helping</a></li>
+         <li><a href="../about/contact_us.html">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>&copy; Copyright 2017. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="../theme/js/custom-min7b30.js?v=4"></script>
+<script src="../../www.google-analytics.com/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="../theme/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('try_swift.html');
+   tryit.compile();
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Swift Loops",
+    "name": "Swift Loops",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/swift/swift_loops.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/swift/images/loop_architecture.jpg",
+        "width": 304,
+        "height": 348
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "July 23 2017 03:34:49.",
+    "dateModified": "July 23 2017 03:34:49.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "There may be a situation when you need to execute a block of code several number of times. In general statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on...."
+}
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Computer Programming",
+                "@id": "https://www.tutorialspoint.com/computer_programming_tutorials.htm"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "Swift",
+                "@id": "https://www.tutorialspoint.com/swift"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+                "name": "Swift - Loops"
+            }
+        }
+    ]
+}
+</script></div>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_loops.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:03 GMT -->
+</html>

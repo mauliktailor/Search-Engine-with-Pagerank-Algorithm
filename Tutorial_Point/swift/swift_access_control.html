@@ -1,0 +1,743 @@
+<!doctype html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_access_control.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Swift Access Control</title>
+<meta name="description" content="Swift Access Control - Learn Swift programming on iOS in simple and easy steps starting from its overview, basic syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<meta name="keywords" content="Swift, Tutorial, beginners, overview, basic Syntax, environment setup, data types, variables, optionals, constants, literals, operators, decision making, strings, characters, arrays, dictionaries, loops, control flow, functions, closures, enumerations, classes, structures, properties, methods, inheritance, initialization, deinitialization, ARC overview, optional chaining, type casting, automatic reference count, extensions, protocols, generics, access control etc." />
+<base  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="471319149685276" />
+<meta property="og:site_name" content="www.tutorialspoint.com" />
+<meta name="robots" content="index, follow"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="../theme/js/script-min-v4.js"></script>
+<link rel="stylesheet" href="../theme/css/style-min5e1f.css?v=2">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #f05c02 url(../images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #f05c02 !important;}
+.submenu-item{ border-bottom: 2px solid #f05c02 !important; border-top: 2px solid #f05c02 !important }
+.ace_scroller{overflow: auto!important;}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img  src="../images/loading-cg.gif" alt="" width="70" height="70" />
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="../index-2.html" title="tutorialspoint">
+      <img alt="tutorialspoint" src="images/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="../about/about_careers.html" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDFiles</a> </li>
+            <li> <a href="../whiteboard.html"><img src="../theme/css/icons/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="../netmeeting.html"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="../online_dev_tools.html"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="../articles/index.html"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="../index-2.html"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../codingground.html"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../tutor_connect/index.html"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="../videotutorials/index.html"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="images/swift-mini-logo.jpg" alt="Swift Tutorial" />
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Tutorial</li>
+<li><a href="index.html">Swift - Home</a></li>
+<li><a href="swift_overview.html">Swift - Overview</a></li>
+<li><a href="swift_environment.html">Swift - Environment</a></li>
+<li><a href="swift_basic_syntax.html">Swift - Basic Syntax</a></li>
+<li><a href="swift_data_types.html">Swift - Data Types</a></li>
+<li><a href="swift_variables.html">Swift - Variables</a></li>
+<li><a href="swift_optionals.html">Swift - Optionals</a></li>
+<li><a href="swift_constants.html">Swift - Constants</a></li>
+<li><a href="swift_literals.html">Swift - Literals</a></li>
+<li><a href="swift_operators.html">Swift - Operators</a></li>
+<li><a href="swift_decision_making.html">Swift - Decision Making</a></li>
+<li><a href="swift_loops.html">Swift - Loops</a></li>
+<li><a href="swift_strings.html">Swift - Strings</a></li>
+<li><a href="swift_characters.html">Swift - Characters</a></li>
+<li><a href="swift_arrays.html">Swift - Arrays</a></li>
+<li><a href="swift_dictionaries.html">Swift - Dictionaries</a></li>
+<li><a href="swift_functions.html">Swift - Functions</a></li>
+<li><a href="swift_closures.html">Swift - Closures</a></li>
+<li><a href="swift_enumerations.html">Swift - Enumerations</a></li>
+<li><a href="swift_structures.html">Swift - Structures</a></li>
+<li><a href="swift_classes.html">Swift - Classes</a></li>
+<li><a href="swift_properties.html">Swift - Properties</a></li>
+<li><a href="swift_methods.html">Swift - Methods</a></li>
+<li><a href="swift_subscripts.html">Swift - Subscripts</a></li>
+<li><a href="swift_inheritance.html">Swift - Inheritance</a></li>
+<li><a href="swift_initialization.html">Swift - Initialization</a></li>
+<li><a href="swift_deinitialization.html">Swift - Deinitialization</a></li>
+<li><a href="swift_arc_overview.html">Swift - ARC Overview</a></li>
+<li><a href="swift_optional_chaining.html">Swift - Optional Chaining</a></li>
+<li><a href="swift_type_casting.html">Swift - Type Casting</a></li>
+<li><a href="swift_extensions.html">Swift - Extensions</a></li>
+<li><a href="swift_protocols.html">Swift - Protocols</a></li>
+<li><a href="swift_generics.html">Swift - Generics</a></li>
+<li><a href="swift_access_control.html">Swift - Access Control</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Swift Useful Resources</li>
+<li><a href="swift_quick_guide.html">Swift - Quick Guide</a></li>
+<li><a href="swift_useful_resources.html">Swift - Useful Resources</a></li>
+<li><a href="swift_discussion.html">Swift - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="../developers_best_practices/index.html">Developer's Best Practices</a></li>
+<li><a target="_top" href="../questions_and_answers.html">Questions and Answers</a></li>
+<li><a target="_top" href="../effective_resume_writing.html">Effective Resume Writing</a></li>
+<li><a target="_top" href="../hr_interview_questions/index.html">HR Interview Questions</a></li>
+<li><a target="_top" href="../computer_glossary.html">Computer Glossary</a></li>
+<li><a target="_top" href="../computer_whoiswho.html">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Swift - Access Control</h1>
+<hr />
+<div class="topgooglead">
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt"> 
+</script>
+</div>
+<hr />
+<div class="pre-btn">
+<a href="swift_generics.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_quick_guide.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>To restrict access to code blocks, modules and abstraction is done through access control. Classes, structures and enumerations can be accessed according to their properties, methods, initializers and subscripts by access control mechanisms. Constants, variables and functions in a protocol are restricted and allowed access as global and local through access control. Access control applied to properties, types and functions can be referred as 'entities'.</p>
+<p>Access control model is based on modules and source files.</p>
+<p>Module is defined as a single unit of code distribution and can be imported using the keyword 'import'.  A source file is defined as a single source code file with in a module to access multiple types and functions.</p>  
+<p>Three different access levels are provided by Swift language. They are Public, Internal and Private access.</p>
+<table class="table table-bordered">
+<tr>
+<th>S.No</th>
+<th>Access Levels &amp; Definition</th>
+</tr>
+<tr>
+<td>1</td>
+<td><p><b>Public</b></p> 
+<p>Enables entities to be processed with in any source file from their defining module, a source file from another module that imports the defining module.</p></td>
+</tr>
+<tr>
+<td>2</td>
+<td><p><b>Internal</b></p>
+<p>Enables entities to be used within any source file from their defining module, but not in any source file outside of that module.</p></td>
+</tr>
+<tr>
+<td>3</td>
+<td><p><b>Private</b></p>
+<p>Restricts the use of an entity to its own defining source file. Private access plays role to hide the implementation details of a specific code functionality.</p></td>
+</tr>
+</table>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+public class SomePublicClass {}
+internal class SomeInternalClass {}
+private class SomePrivateClass {}
+
+public var somePublicVariable = 0
+internal let someInternalConstant = 0
+private func somePrivateFunction() {}
+</pre>
+<h2>Access Control for Function types</h2>
+<p>Some functions may have arguments declared inside the function without any return values. The following program declares a and b as arguments to the sum() function. Inside the function itself the values for arguments a and b are passed by invoking the function call sum() and its values are printed thereby eliminating return values. To make the function's return type as private, declare the function's overall access level with the private modifier.</p>
+<pre class="prettyprint notranslate tryit">
+private func sum(a: Int, b: Int) {
+   let a = a + b
+   let b = a - b
+   println(a, b)
+}
+
+sum(20, 10)
+sum(40,10)
+sum(24,6)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+(30, 20)
+(50, 40)
+(30, 24)
+</pre>
+<h2>Access Control for Enumeration types</h2>
+<pre class="prettyprint notranslate tryit">
+public enum Student {
+   case Name(String)
+   case Mark(Int,Int,Int)
+}
+
+var studDetails = Student.Name("Swift")
+var studMarks = Student.Mark(98,97,95)
+
+switch studMarks {
+   case .Name(let studName):
+      println("Student name is: \(studName).")
+   case .Mark(let Mark1, let Mark2, let Mark3):
+      println("Student Marks are: \(Mark1),\(Mark2),\(Mark3).")
+   default:
+      println("Nothing")
+}
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Student Marks are: 98,97,95
+</pre>
+<p>Enumeration in Swift language automatically receive the same access level for individual cases of an enumeration. Consider for example to access the students name and marks secured in three subjects enumeration name is declared as student and the members present in enum class are name which belongs to string datatype, marks are represented as mark1, mark2 and mark3 of datatype Integer. To access either the student name or marks they have scored. Now, the switch case will print student name if that case block is executed otherwise it will print the marks secured by the student. If both condition fails the default block will be executed.</p>
+<h2>Access Control for SubClasses</h2>
+<p>Swift allows the user to subclass any class that can be accessed in the current access context. A subclass cannot have a higher access level than its superclass. The user is restricted from writing a public subclass of an internal superclass.</p>
+<pre class="prettyprint notranslate tryit">
+public class cricket {
+   private func print() {
+      println("Welcome to Swift Super Class")
+   }
+}
+
+internal class tennis: cricket  {
+   override internal func print() {
+      println("Welcome to Swift Sub Class")
+   }
+}
+
+let cricinstance = cricket()
+cricinstance.print()
+
+let tennisinstance = tennis()
+tennisinstance.print()
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Welcome to Swift Super Class
+Welcome to Swift Sub Class
+</pre>
+<h2>Access Control for Constants, variables, properties and subscripts</h2>
+<p>Swift constant, variable, or property cannot be defined as public than its type. It is not valid to write a public property with a private type. Similarly, a subscript cannot be more public than its index  or return type.</p>
+<p>When a constant, variable, property, or subscript makes use of a private type, the constant, variable, property, or subscript must also be marked as private &minus;</p>
+<pre class="prettyprint notranslate">
+private var privateInstance = SomePrivateClass()
+</pre>
+<h2>Getters and Setters</h2>
+<p>Getters and setters for constants, variables, properties, and subscripts automatically receive the same access level as the constant, variable, property, or subscript they belong to.</p>
+<pre class="prettyprint notranslate tryit">
+class Samplepgm {
+   private var counter: Int = 0 {
+      willSet(newTotal) {
+         println("Total Counter is: \(newTotal)")
+      }
+      didSet{
+         if counter &gt; oldValue {
+            println("Newly Added Counter \(counter - oldValue)")
+         }
+      }
+   }
+}
+
+let NewCounter = Samplepgm()
+NewCounter.counter = 100
+NewCounter.counter = 800
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+Total Counter is: 100
+Newly Added Counter 100
+Total Counter is: 800
+Newly Added Counter 700
+</pre>
+<h2>Access Control for Initializers and Default Initializers</h2>
+<p>Custom initializers can be assigned an access level less than or equal to the type that they initialize. A required initializer must have the same access level as the class it belongs to. The types of an initializer's parameters cannot be more private than the initializer's own access level.</p>
+<p>To declare each and every subclass of the initialize 'required' keyword needs to be defined before the init() function.</p>
+<pre class="prettyprint notranslate tryit">
+class classA {
+   required init() {
+      var a = 10
+      println(a)
+   }
+}
+
+class classB: classA {
+   required init() {
+      var b = 30
+      println(b)
+   }
+}
+
+let res = classA()
+let print = classB()
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+10
+30
+10
+</pre>
+<p>A default initializer has the same access level as the type it initializes, unless that type is defined as public. When default initialize is defined as public it is considered internal. When the user needs a public type to be initializable with a no-argument initializer  in another module,  provide explicitly a public no-argument initializer as part of the type's definition.</p>
+<h2>Access Control for Protocols</h2>
+<p>When we define a new protocol to inherit functionalities from an existing protocol, both has to be declared the same access levels to inherit the properties of each other. Swift access control won't allow the users to define a 'public' protocol that inherits from an 'internal' protocol.</p>
+<pre class="prettyprint notranslate tryit">
+public protocol tcpprotocol {
+   init(no1: Int)
+}
+
+public class mainClass {
+   var no1: Int // local storage
+   init(no1: Int) {
+      self.no1 = no1 // initialization
+   }
+}
+
+class subClass: mainClass, tcpprotocol {
+   var no2: Int
+   init(no1: Int, no2 : Int) {
+      self.no2 = no2
+      super.init(no1:no1)
+   }
+
+   // Requires only one parameter for convenient method
+   required override convenience init(no1: Int)  {
+      self.init(no1:no1, no2:0)
+   }
+}
+
+let res = mainClass(no1: 20)
+let print = subClass(no1: 30, no2: 50)
+
+println("res is: \(res.no1)")
+println("res is: \(print.no1)")
+println("res is: \(print.no2)")
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+res is: 20
+res is: 30
+res is: 50
+</pre>
+<h2>Access Control for Extensions</h2>
+<p>Swift does not allow the users to provide an explicit access level modifier for an extension when the user uses that extension to add protocol conformance. The default access level for each protocol requirement implementation within the extension is provided with its own protocol access level.</p>
+<h2>Access Control for Generics</h2>
+<p>Generics allow the user to specify minimum access levels to access the type constraints on its type parameters.</p>
+<pre class="prettyprint notranslate tryit">
+public struct TOS&lt;T&gt; {
+   var items = [T]()
+   private mutating func push(item: T) {
+      items.append(item)
+   }
+
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+}
+
+var tos = TOS&lt;String&gt;()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Type Parameters")
+println(tos.items)
+
+tos.push("Naming Type Parameters")
+println(tos.items)
+let deletetos = tos.pop()
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Type Parameters]
+[Swift, Generics, Type Parameters, Naming Type Parameters]
+</pre>
+<h2>Access Control for Type Aliases</h2>
+<p>The user can define type aliases to treat distinct access control types. Same access level or different access levels can be defined by the user. When type alias is 'private' its associated members can be declared as 'private, internal of public type'. When type alias is public the members cannot be alias as an 'internal' or 'private' name</p>
+<p>Any type aliases you define are treated as distinct types for the purposes of access control. A type alias can have an access level less than or equal to the access level of the type it aliases. For example, a private type alias can alias a private, internal, or public type, but a public type alias cannot alias an internal or private type.</p>
+<pre class="prettyprint notranslate tryit">
+public protocol Container {
+   typealias ItemType
+   mutating func append(item: ItemType)
+      var count: Int { get }
+      subscript(i: Int) -> ItemType { get }
+}
+
+struct Stack&lt;T&gt;: Container {
+   // original Stack&lt;T&gt; implementation
+   var items = [T]()
+   mutating func push(item: T) {
+      items.append(item)
+   }
+
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+
+   // conformance to the Container protocol
+   mutating func append(item: T) {
+      self.push(item)
+   }
+   
+   var count: Int {
+      return items.count
+   }
+
+   subscript(i: Int) -> T {
+      return items[i]
+   }
+}
+
+func allItemsMatch&lt;
+   C1: Container, C2: Container
+   where C1.ItemType == C2.ItemType, C1.ItemType: Equatable>
+   (someContainer: C1, anotherContainer: C2) -> Bool {
+   // check that both containers contain the same number of items
+   if someContainer.count != anotherContainer.count {
+      return false
+   }
+
+   // check each pair of items to see if they are equivalent
+   for i in 0..&lt;someContainer.count {
+      if someContainer[i] != anotherContainer[i] {
+         return false
+      }
+   }
+
+   // all items match, so return true
+   return true
+}
+
+var tos = Stack&lt;String&gt;()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Where Clause")
+println(tos.items)
+
+var eos = ["Swift", "Generics", "Where Clause"]
+println(eos)
+</pre>
+<p>When we run the above program using playground, we get the following result &minus;</p>
+<pre class="result notranslate">
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Where Clause]
+[Swift, Generics, Where Clause]
+</pre>
+<hr />
+<div class="pre-btn">
+<a href="swift_generics.html"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="../cgi-bin/printpage.html" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="swift_quick_guide.html">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr />
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/swift/swift_access_control.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/facebookIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/swift/swift_access_control.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/twitterIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/swift/swift_access_control.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/linkedinIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/swift/swift_access_control.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/googlePlusIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/swift/swift_access_control.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/StumbleUponIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/swift/swift_access_control.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="../images/reddit.jpg" alt="img" />
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="../../pagead2.googlesyndication.com/pagead/f.txt">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="../index-2.html" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="../scripts/img/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="../about/tutorials_writing.html">Write for us</a></li>
+         <li><a href="../about/faq.html">FAQ's</a></li>
+         <li><a href="../about/about_helping.html">Helping</a></li>
+         <li><a href="../about/contact_us.html">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>&copy; Copyright 2017. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="../theme/js/custom-minae52.js?v=5"></script>
+<script src="../../www.google-analytics.com/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="../theme/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('try_swift.html');
+   tryit.compile();
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Swift Access Control",
+    "name": "Swift Access Control",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/swift/swift_access_control.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/swift/images/swift-mini-logo.jpg",
+        "width": 255,
+        "height": 194
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "July 23 2017 03:34:49.",
+    "dateModified": "July 23 2017 03:34:49.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "To restrict access to code blocks, modules and abstraction is done through access control. Classes, structures and enumerations can be accessed according to their properties, methods, initializers and subscripts by access control mechanisms. Constants, va..."
+}
+</script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Swift",
+                "@id": "https://www.tutorialspoint.com/swift"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "Swift - Access Control"
+            }
+        }
+    ]
+}
+</script></div>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/swift/swift_access_control.htm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:05 GMT -->
+</html>

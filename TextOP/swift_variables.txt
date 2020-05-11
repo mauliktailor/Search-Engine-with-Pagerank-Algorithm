@@ -1,0 +1,45 @@
+Swift Variables Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Variables Advertisements Previous Page Next Page   A variable provides us with named storage that our programs can manipulate. Each variable in Swift has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable. Swift supports the following basic types of variables ? Int or UInt ? This is used for whole numbers. More specifically, you can use Int32, Int64 to define 32 or 64 bit signed integer, whereas UInt32 or UInt64 to define 32 or 64 bit unsigned integer variables. For example, 42 and -23. Float ? This is used to represent a 32-bit floating-point number. It is used to hold numbers with smaller decimal points. For example, 3.14159, 0.1, and -273.158. Double ? This is used to represent a 64-bit floating-point number and used when floating-point values must be very large. For example 3.14159, 0.1, and -273.158. Bool ? This represents a Boolean value which is either true or false. String ? This is an ordered collection of characters. For example, "Hello, World!" Character ? This is a single-character string literal. For example, "C" Swift also allows to define various other types of variables, which we will cover in subsequent chapters, such as Optional, Array, Dictionaries, Structures, and Classes. The following section will cover how to declare and use various types of variables in Swift programming. Variable Declaration A variable declaration tells the compiler where and how much to create the storage for the variable. Before you use variables, you must declare them using var keyword as follows ? 
+var variableName = <initial value>
+ The following example shows how to declare a variable in Swift ? 
+import Cocoa
+
+var varA = 42
+println(varA)
+ When we run the above program using playground, we get the following result ? 
+42
+ Type Annotations You can provide a type annotation when you declare a variable, to be clear about the kind of values the variable can store. Here is the syntax ? 
+var variableName:<data type> = <optional initial value>
+ The following example shows how to declare a variable in Swift using Annotation. Here it is important to note that if we are not using type annotation, then it becomes mandatory to provide an initial value for the variable, otherwise we can just declare our variable using type annotation. 
+import Cocoa
+
+var varA = 42
+println(varA)
+
+var varB:Float
+
+varB = 3.14159
+println(varB)
+ When we run the above program using playground, we get the following result ? 
+42
+3.1415901184082
+ Naming Variables The name of a variable can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because Swift is a case-sensitive programming language. You can use simple or Unicode characters to name your variables. The following examples shows how you can name the variables ? 
+import Cocoa
+
+var _var = "Hello, Swift!"
+println(_var)
+
+var ?? = "????"
+println(??)
+ When we run the above program using playground, we get the following result ? 
+Hello, Swift!
+????
+ Printing Variables You can print the current value of a constant or variable with the println function. You can interpolate a variable value by wrapping the name in parentheses and escape it with a backslash before the opening parenthesis: Following are valid examples ? 
+import Cocoa
+
+var varA = "Godzilla"
+var varB = 1000.00
+
+println("Value of \(varA) is more than \(varB) millions")
+ When we run the above program using playground, we get the following result ? 
+Value of Godzilla is more than 1000.0 millions
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

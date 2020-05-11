@@ -1,0 +1,260 @@
+Swift Generics Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Generics Advertisements Previous Page Next Page   Swift language provides 'Generic' features to write flexible and reusable functions and types. Generics are used to avoid duplication and to provide abstraction. Swift standard libraries are built with generics code. Swifts 'Arrays' and 'Dictionary' types belong to generic collections. With the help of arrays and dictionaries the arrays are defined to hold 'Int' values and 'String' values or any other types. 
+func exchange(inout a: Int, inout b: Int) {
+   let temp = a
+   a = b
+   b = temp
+}
+
+var numb1 = 100
+var numb2 = 200
+
+println("Before Swapping values are: \(numb1) and \(numb2)")
+exchange(&numb1, &numb2)
+println("After Swapping values are: \(numb1) and \(numb2)")
+ When we run the above program using playground, we get the following result ? 
+Before Swapping values are: 100 and 200
+After Swapping values are: 200 and 100
+ Generic Functions: Type Parameters Generic functions can be used to access any data type like 'Int' or 'String'. 
+func exchange<T>(inout a: T, inout b: T) {
+   let temp = a
+   a = b
+   b = temp
+}
+
+var numb1 = 100
+var numb2 = 200
+
+println("Before Swapping Int values are: \(numb1) and \(numb2)")
+exchange(&numb1, &numb2)
+println("After Swapping Int values are: \(numb1) and \(numb2)")
+
+var str1 = "Generics"
+var str2 = "Functions"
+
+println("Before Swapping String values are: \(str1) and \(str2)")
+exchange(&str1, &str2)
+println("After Swapping String values are: \(str1) and \(str2)")
+ When we run the above program using playground, we get the following result ? 
+Before Swapping Int values are: 100 and 200
+After Swapping Int values are: 200 and 100
+Before Swapping String values are: Generics and Functions
+After Swapping String values are: Functions and Generics
+ The function exchange() is used to swap values which is described in the above program and <T> is used as a type parameter. For the first time, function exchange() is called to return 'Int' values and second call to the function exchange() will return 'String' values. Multiple parameter types can be included inside the angle brackets separated by commas. Type parameters are named as user defined to know the purpose of the type parameter that it holds. Swift provides <T> as generic type parameter name. However type parameters like Arrays and Dictionaries can also be named as key, value to identify that they belong to type 'Dictionary'. Generic Types 
+struct TOS<T> {
+   var items = [T]()
+   mutating func push(item: T) {
+      items.append(item)
+   }
+   
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+}
+
+var tos = TOS<String>()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Type Parameters")
+println(tos.items)
+
+tos.push("Naming Type Parameters")
+println(tos.items)
+
+let deletetos = tos.pop()
+ When we run the above program using playground, we get the following result ? 
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Type Parameters]
+[Swift, Generics, Type Parameters, Naming Type Parameters]
+ Extending a Generic Type Extending the stack property to know the top of the item is included with 'extension' keyword. 
+struct TOS<T> {
+   var items = [T]()
+   mutating func push(item: T) {
+      items.append(item)
+   }
+
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+}
+
+var tos = TOS<String>()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Type Parameters")
+println(tos.items)
+
+tos.push("Naming Type Parameters")
+println(tos.items)
+
+extension TOS {
+   var first: T? {
+      return items.isEmpty ? nil : items[items.count - 1]
+   }
+}
+
+if let first = tos.first {
+   println("The top item on the stack is \(first).")
+}
+ When we run the above program using playground, we get the following result ? 
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Type Parameters]
+[Swift, Generics, Type Parameters, Naming Type Parameters]
+The top item on the stack is Naming Type Parameters.
+ The top item on the stack is Naming Type Parameters. Type Constraints Swift language allows 'type constraints' to specify whether the type parameter inherits from a specific class, or to ensure protocol conformance standard. 
+func exchange<T>(inout a: T, inout b: T) {
+   let temp = a
+   a = b
+   b = temp
+}
+
+var numb1 = 100
+var numb2 = 200
+
+println("Before Swapping Int values are: \(numb1) and \(numb2)")
+exchange(&numb1, &numb2)
+println("After Swapping Int values are: \(numb1) and \(numb2)")
+
+   
+var str1 = "Generics"
+var str2 = "Functions"
+
+println("Before Swapping String values are: \(str1) and \(str2)")
+exchange(&str1, &str2)
+println("After Swapping String values are: \(str1) and \(str2)")
+ When we run the above program using playground, we get the following result ? 
+Before Swapping Int values are: 100 and 200
+After Swapping Int values are: 200 and 100
+Before Swapping String values are: Generics and Functions
+After Swapping String values are: Functions and Generics
+ Associated Types Swift allows associated types to be declared inside the protocol definition by the keyword 'typealias'. 
+protocol Container {
+   typealias ItemType
+   mutating func append(item: ItemType)
+   var count: Int { get }
+   subscript(i: Int) -> ItemType { get }
+}
+
+struct TOS<T>: Container {
+   // original Stack<T> implementation
+   var items = [T]()
+   mutating func push(item: T) {
+      items.append(item)
+   }
+   
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+
+   // conformance to the Container protocol
+   mutating func append(item: T) {
+      self.push(item)
+   }
+   
+   var count: Int {
+      return items.count
+   }
+
+   subscript(i: Int) -> T {
+      return items[i]
+   }
+}
+
+var tos = TOS<String>()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Type Parameters")
+println(tos.items)
+
+tos.push("Naming Type Parameters")
+println(tos.items)
+ When we run the above program using playground, we get the following result ? 
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Type Parameters]
+[Swift, Generics, Type Parameters, Naming Type Parameters]
+ Where Clauses Type constraints enable the user to define requirements on the type parameters associated with a generic function or type. For defining requirements for associated types 'where' clauses are declared as part of type parameter list. 'where' keyword is placed immediately after the list of type parameters followed by constraints of associated types, equality relationships between types and associated types. 
+protocol Container {
+   typealias ItemType
+   mutating func append(item: ItemType)
+   var count: Int { get }
+   subscript(i: Int) -> ItemType { get }
+}
+
+struct Stack<T>: Container {
+   // original Stack<T> implementation
+   var items = [T]()
+   mutating func push(item: T) {
+      items.append(item)
+   }
+
+   mutating func pop() -> T {
+      return items.removeLast()
+   }
+
+   // conformance to the Container protocol
+   mutating func append(item: T) {
+      self.push(item)
+   }
+   
+   var count: Int {
+      return items.count
+   }
+
+   subscript(i: Int) -> T {
+      return items[i]
+   }
+}
+
+func allItemsMatch<
+   C1: Container, C2: Container
+   where C1.ItemType == C2.ItemType, C1.ItemType: Equatable>
+
+   (someContainer: C1, anotherContainer: C2) -> Bool {
+
+      // check that both containers contain the same number of items
+      if someContainer.count != anotherContainer.count {
+         return false
+      }
+
+      // check each pair of items to see if they are equivalent
+      for i in 0..<someContainer.count {
+         if someContainer[i] != anotherContainer[i] {
+            return false
+         }
+      }
+      // all items match, so return true
+      return true
+   }
+
+var tos = Stack<String>()
+tos.push("Swift")
+println(tos.items)
+
+tos.push("Generics")
+println(tos.items)
+
+tos.push("Where Clause")
+println(tos.items)
+
+var eos = ["Swift", "Generics", "Where Clause"]
+println(eos)
+ When we run the above program using playground, we get the following result ? 
+[Swift]
+[Swift, Generics]
+[Swift, Generics, Where Clause]
+[Swift, Generics, Where Clause]
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

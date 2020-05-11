@@ -1,0 +1,88 @@
+Swift Structures Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Structures Advertisements Previous Page Next Page   Swift provides a flexible building block of making use of constructs as Structures. By making use of these structures once can define constructs methods and properties. Unlike C and Objective C Structure need not require implementation files and interface. Structure allows us to create a single file and to extend its interface automatically to other blocks. In Structure the variable values are copied and passed in subsequent codes by returning a copy of the old values so that the values cannot be altered. Syntax 
+Structures are defined with a 'Struct' Keyword.
+struct nameStruct {
+   Definition 1
+   Definition 2
+    --- 
+   Definition N
+}
+ Definition of a Structure Consider for example, suppose we have to access students record containing marks of three subjects and to find out the total of three subjects. Here markStruct is used to initialize a structure with three marks as datatype 'Int'. 
+struct MarkStruct {
+   var mark1: Int
+   var mark2: Int
+   var mark3: Int
+}
+ Accessing the Structure and its Properties The members of the structure are accessed by its structure name. The instances of the structure are initialized by the 'let' keyword. 
+struct studentMarks {
+   var mark1 = 100
+   var mark2 = 200
+   var mark3 = 300
+}
+let marks = studentMarks()
+println("Mark1 is \(marks.mark1)")
+println("Mark2 is \(marks.mark2)")
+println("Mark3 is \(marks.mark3)")
+ When we run the above program using playground, we get the following result ? 
+Mark1 is 100
+Mark2 is 200
+Mark3 is 300
+ Students marks are accessed by the structure name 'studentMarks'. The structure members are initialized as mark1, mark2, mark3 with integer type values. Then the structure studentMarks() is passed to the 'marks' with 'let' keyword. Hereafter 'marks' will contain the structure member values. Now the values are printed by accessing the structure member values by '.' with its initialized names. 
+struct MarksStruct {
+   var mark: Int
+
+   init(mark: Int) {
+      self.mark = mark
+   }
+}
+var aStruct = MarksStruct(mark: 98)
+var bStruct = aStruct // aStruct and bStruct are two structs with the same value!
+bStruct.mark = 97
+println(aStruct.mark) // 98
+println(bStruct.mark) // 97
+ When we run the above program using playground, we get the following result ? 
+98
+97
+ Best Usage Practices of Structures Swift language provides the functionality to define structures as custom data types for building the function blocks. The instances of structure are passed by its value to the defined blocks for further manipulations. Need for having structures To encapsulate simple data values. To copy the encapsulated data and its associated properties by 'values' rather than by 'references'. Structure to 'Copy' and 'Reference'. Structures in swift pass their members with their values rather than by its references. 
+struct markStruct { 
+   var mark1: Int
+   var mark2: Int
+   var mark3: Int
+
+   init(mark1: Int, mark2: Int, mark3: Int) {
+      self.mark1 = mark1
+      self.mark2 = mark2
+      self.mark3 = mark3
+   }
+}
+
+var marks = markStruct(mark1: 98, mark2: 96, mark3:100)
+println(marks.mark1)
+println(marks.mark2)
+println(marks.mark3)
+ When we run the above program using playground, we get the following result ? 
+98
+96
+100
+ Another Example 
+struct markStruct { 
+   var mark1: Int
+   var mark2: Int
+   var mark3: Int
+
+   init(mark1: Int, mark2: Int, mark3: Int){
+      self.mark1 = mark1
+      self.mark2 = mark2
+      self.mark3 = mark3
+   }
+}
+
+var fail = markStruct(mark1: 34, mark2: 42, mark3: 13)
+
+println(fail.mark1)
+println(fail.mark2)
+println(fail.mark3)
+ When we run the above program using playground, we get the following result ? 
+34
+42
+13
+ The structure 'markStruct' is defined first with its members mark1, mark2 and mark3. Now the variables of member classes are initialized to hold integer values. Then the copy of the structure members are created with 'self' Keyword. Once the copy of the structure members are created structure block with its parameter marks are passed to 'marks' variable which will now hold the students marks. Then the marks are printed as 98, 96, 100. Next step for the same structure members another instance named 'fail' is used to point the same structure members with different marks. Then the results are now printed as 34, 42, 13. This clearly explains that structures will have a copy of the member variables then pass the members to their upcoming function blocks. Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

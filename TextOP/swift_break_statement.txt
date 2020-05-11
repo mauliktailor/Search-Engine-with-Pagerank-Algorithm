@@ -1,0 +1,21 @@
+Swift Break Statement Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Break Statement Advertisements Previous Page Next Page   The break statement in C programming language has the following two usages ? When a break statement is encountered inside a loop, the loop is immediately terminated and the program control resumes at the next statement following the loop. It can be used to terminate a case in switch statement (covered in the next chapter). If you are using nested loops (i.e., one loop inside another loop), then the break statement will stop the execution of the innermost loop and start executing the next line of the code after the block. Syntax The syntax for a break statement in Swift is as follows ? 
+break
+ Flow Diagram Example 
+import Cocoa
+ 
+var index = 10
+
+do{
+   index = index + 1
+	
+   if( index == 15 ){
+      break
+   }
+   println( "Value of index is \(index)")
+}while index < 20 
+ When the above code is compiled and executed, it produces the following result ? 
+Value of index is 11
+Value of index is 12
+Value of index is 13
+Value of index is 14
+ Previous Page Print Next Page   swift_loops.htm Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

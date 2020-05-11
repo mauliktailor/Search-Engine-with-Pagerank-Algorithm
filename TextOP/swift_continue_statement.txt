@@ -1,0 +1,26 @@
+Swift Continue Statement Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Continue Statement Advertisements Previous Page Next Page   The continue statement in Swift tells a loop to stop what it is doing and start again at the beginning of the next iteration through the loop. For a for loop, the continue statement causes the conditional test and increments the portions of the loop to execute. For while and do...while loops, the continue statement causes the program control to pass to the conditional tests. Syntax The syntax for a continue statement in Swift is as follows ? 
+continue
+ Flow Diagram Example 
+import Cocoa
+ 
+var index = 10
+
+do{
+   index = index + 1
+	
+   if( index == 15 ){
+      continue
+   }
+   println( "Value of index is \(index)")
+}while index < 20 
+ When the above code is compiled and executed, it produces the following result ? 
+Value of index is 11
+Value of index is 12
+Value of index is 13
+Value of index is 14
+Value of index is 16
+Value of index is 17
+Value of index is 18
+Value of index is 19
+Value of index is 20
+ Previous Page Print Next Page   swift_loops.htm Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

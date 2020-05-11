@@ -1,0 +1,63 @@
+Swift Switch Statement Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Switch Statement Advertisements Previous Page Next Page   A switch statement in Swift completes its execution as soon as the first matching case is completed instead of falling through the bottom of subsequent cases like it happens in C and C++ programing languages. Following is a generic syntax of switch statement in C and C++ ? 
+switch(expression) {
+   case constant-expression  :
+      statement(s);
+      break; /* optional */
+   case constant-expression  :
+      statement(s);
+      break; /* optional */
+  
+   /* you can have any number of case statements */
+   default : /* Optional */
+      statement(s);
+}
+ Here we need to use break statement to come out of a case statement otherwise execution control will fall through the subsequent case statements available below to matching case statement. Syntax Following is a generic syntax of switch statement available in Swift ? 
+switch expression {
+   case expression1  :
+      statement(s)
+      fallthrough /* optional */
+   case expression2, expression3  :
+      statement(s)
+      fallthrough /* optional */
+  
+   default : /* Optional */
+      statement(s);
+}
+ If we do not use fallthrough statement, then the program will come out of switch statement after executing the matching case statement. We will take the following two examples to make its functionality clear. Example 1 Following is an example of switch statement in Swift programming without using fallthrough ? 
+import Cocoa
+
+var index = 10
+
+switch index {
+   case 100  :
+      println( "Value of index is 100")
+   case 10,15  :
+      println( "Value of index is either 10 or 15")
+   case 5  :
+      println( "Value of index is 5")
+   default :
+      println( "default case")
+}
+ When the above code is compiled and executed, it produces the following result ? 
+Value of index is either 10 or 15
+ Example 2 Following is an example of switch statement in Swift programming with fallthrough ? 
+import Cocoa
+
+var index = 10
+
+switch index {
+   case 100  :
+      println( "Value of index is 100")
+      fallthrough
+   case 10,15  :
+      println( "Value of index is either 10 or 15")
+      fallthrough
+   case 5  :
+      println( "Value of index is 5")
+   default :
+      println( "default case")
+}
+ When the above code is compiled and executed, it produces the following result ? 
+Value of index is either 10 or 15
+Value of index is 5
+ Previous Page Print Next Page   swift_decision_making.htm Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

@@ -1,0 +1,487 @@
+Swift Initialization Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Initialization Advertisements Previous Page Next Page   Classes, structures and enumerations once declared in Swift are initialized for preparing instance of a class. Initial value is initialized for stored property and also for new instances too the values are initialized to proceed further. The keyword to create initialization function is carried out by 'init()' method. Swift initializer differs from Objective-C that it does not return any values. Its function is to check for initialization of newly created instances before its processing. Swift also provides 'deinitialization' process for performing memory management operations once the instances are deallocated. Initializer Role for Stored Properties Stored property have to initialize the instances for its classes and structures before processing the instances. Stored properties use initializer to assign and initialize values thereby eradicating the need to call property observers. Initializer is used in stored property. To create an initial value. To assign default property value within the property definition. To initialize an instance for a particular data type 'init()' is used. No arguments are passed inside the init() function. Syntax 
+init() {
+   //New Instance initialization goes here
+}
+ Example 
+struct rectangle {
+   var length: Double
+   var breadth: Double
+   init() {
+      length = 6
+      breadth = 12
+   }
+}
+var area = rectangle()
+println("area of rectangle is \(area.length*area.breadth)")
+ When we run the above program using playground, we get the following result ? 
+area of rectangle is 72.0
+ Here the structure 'rectangle' is initialized with members length and breadth as 'Double' datatypes. Init() method is used to initialize the values for the newly created members length and double. Area of rectangle is calculated and returned by calling the rectangle function. Setting Property Values by Default Swift language provides Init() function to initialize the stored property values. Also, the user has provision to initialize the property values by default while declaring the class or structure members. When the property takes the same value alone throughout the program we can declare it in the declaration section alone rather than initializing it in init(). Setting property values by default enables the user when inheritance is defined for classes or structures. 
+struct rectangle {
+   var length = 6
+   var breadth = 12
+}
+var area = rectangle()
+println("area of rectangle is \(area.length*area.breadth)")
+ When we run the above program using playground, we get the following result ? 
+area of rectangle is 72.0
+ Here instead of declaring length and breadth in init() the values are initialized in declaration itself. Parameters Initialization In Swift language the user has the provision to initialize parameters as part of the initializer's definition using init(). 
+struct Rectangle {
+   var length: Double
+   var breadth: Double
+   var area: Double
+
+   init(fromLength length: Double, fromBreadth breadth: Double) {
+      self.length = length
+      self.breadth = breadth
+      area = length * breadth
+   }
+
+   init(fromLeng leng: Double, fromBread bread: Double) {
+      self.length = leng
+      self.breadth = bread
+      area = leng * bread
+   }
+}
+
+let ar = Rectangle(fromLength: 6, fromBreadth: 12)
+println("area is: \(ar.area)")
+
+let are = Rectangle(fromLeng: 36, fromBread: 12)
+println("area is: \(are.area)")
+ When we run the above program using playground, we get the following result ? 
+area is: 72.0
+area is: 432.0
+ Local & External Parameters Initialization parameters have both local and global parameter names similar to that of function and method parameters. Local parameter declaration is used to access within the initialize body and external parameter declaration is used to call the initializer. Swift initializers differ from function and method initializer that they do not identify which initializer are used to call which functions. To overcome this, Swift introduces an automatic external name for each and every parameter in init(). This automatic external name is as equivalent as local name written before every initialization parameter. 
+struct Days {
+   let sunday, monday, tuesday: Int
+   init(sunday: Int, monday: Int, tuesday: Int) {
+      self.sunday = sunday
+      self.monday = monday
+      self.tuesday = tuesday
+   }
+
+   init(daysofaweek: Int) {
+      sunday = daysofaweek
+      monday = daysofaweek
+      tuesday = daysofaweek
+   }
+}
+
+let week = Days(sunday: 1, monday: 2, tuesday: 3)
+println("Days of a Week is: \(week.sunday)")
+println("Days of a Week is: \(week.monday)")
+println("Days of a Week is: \(week.tuesday)")
+
+let weekdays = Days(daysofaweek: 4)
+println("Days of a Week is: \(weekdays.sunday)")
+println("Days of a Week is: \(weekdays.monday)")
+println("Days of a Week is: \(weekdays.tuesday)")
+ When we run the above program using playground, we get the following result ? 
+Days of a Week is: 1
+Days of a Week is: 2
+Days of a Week is: 3
+Days of a Week is: 4
+Days of a Week is: 4
+Days of a Week is: 4
+ Parameters without External Names When an external name is not needed for an initialize underscore '_' is used to override the default behavior. 
+struct Rectangle {
+   var length: Double
+
+   init(frombreadth breadth: Double) {
+      length = breadth * 10
+   }
+
+   init(frombre bre: Double) {
+      length = bre * 30
+   }
+
+   init(_ area: Double) {
+      length = area
+   }
+}
+
+let rectarea = Rectangle(180.0)
+println("area is: \(rectarea.length)")
+
+let rearea = Rectangle(370.0)
+println("area is: \(rearea.length)")
+
+let recarea = Rectangle(110.0)
+println("area is: \(recarea.length)")
+ When we run the above program using playground, we get the following result ? 
+area is: 180.0
+area is: 370.0
+area is: 110.0
+ Optional Property Types When the stored property at some instance does not return any value that property is declared with an 'optional' type indicating that 'no value' is returned for that particular type. When the stored property is declared as 'optional' it automatically initializes the value to be 'nil' during initialization itself. 
+struct Rectangle {
+   var length: Double?
+
+   init(frombreadth breadth: Double) {
+      length = breadth * 10
+   }
+
+   init(frombre bre: Double) {
+      length = bre * 30
+   }
+
+   init(_ area: Double) {
+      length = area
+   }
+}
+
+let rectarea = Rectangle(180.0)
+println("area is: \(rectarea.length)")
+
+let rearea = Rectangle(370.0)
+println("area is: \(rearea.length)")
+
+let recarea = Rectangle(110.0)
+println("area is: \(recarea.length)")
+ When we run the above program using playground, we get the following result ? 
+area is: Optional(180.0)
+area is: Optional(370.0)
+area is: Optional(110.0)
+ Modifying Constant Properties During Initialization Initialization also allows the user to modify the value of constant property too. During initialization, class property allows its class instances to be modified by the super class and not by the subclass. Consider for example in the previous program 'length' is declared as 'variable' in the main class. The below program variable 'length' is modified as 'constant' variable. 
+struct Rectangle {
+   let length: Double?
+
+   init(frombreadth breadth: Double) {
+      length = breadth * 10
+   }
+
+   init(frombre bre: Double) {
+      length = bre * 30
+   }
+
+   init(_ area: Double) {
+      length = area
+   }
+}
+
+let rectarea = Rectangle(180.0)
+println("area is: \(rectarea.length)")
+
+let rearea = Rectangle(370.0)
+println("area is: \(rearea.length)")
+
+let recarea = Rectangle(110.0)
+println("area is: \(recarea.length)")
+ When we run the above program using playground, we get the following result ? 
+area is: Optional(180.0)
+area is: Optional(370.0)
+area is: Optional(110.0)
+ Default Initializers Default initializers provide a new instance to all its declared properties of base class or structure with default values. 
+class defaultexample {
+   var studname: String?
+   var stmark = 98
+   var pass = true
+}
+var result = defaultexample()
+
+println("result is: \(result.studname)")
+println("result is: \(result.stmark)")
+println("result is: \(result.pass)")
+ When we run the above program using playground, we get the following result ? 
+result is: nil
+result is: 98
+result is: true
+ The above program is defined with class name as 'defaultexample'. Three member functions are initialized by default as 'studname?' to store 'nil' values, 'stmark' as 98 and 'pass' as Boolean value 'true'. Likewise the member values in the class can be initialized as default before processing the class member types. Memberwise Initializers for Structure Types When the custom initializers are not provided by the user, Structure types in Swift will automatically receive the 'memberwise initializer'. Its main function is to initialize the new structure instances with the default memberwise initialize and then the new instance properties are passed to the memberwise initialize by name. 
+struct Rectangle {
+   var length = 100.0, breadth = 200.0
+}
+let area = Rectangle(length: 24.0, breadth: 32.0)
+
+println("Area of rectangle is: \(area.length)")
+println("Area of rectangle is: \(area.breadth)")
+ When we run the above program using playground, we get the following result ? 
+Area of rectangle is: 24.0
+Area of rectangle is: 32.0
+ Structures are initialized by default for their membership functions during initialization for 'length' as '100.0' and 'breadth' as '200.0'. But the values are overridden during the processing of variables length and breadth as 24.0 and 32.0. Initializer Delegation for Value Types Initializer Delegation is defined as calling initializers from other initializers. Its main function is to act as reusability to avoid code duplication across multiple initializers. 
+struct Stmark {
+   var mark1 = 0.0, mark2 = 0.0
+}
+struct stdb {
+   var m1 = 0.0, m2 = 0.0
+}
+
+struct block {
+   var average = stdb()
+   var result = Stmark()
+
+   init() {}
+
+   init(average: stdb, result: Stmark) {
+      self.average = average
+      self.result = result
+   }
+
+   init(avg: stdb, result: Stmark) {
+      let tot = avg.m1 - (result.mark1 / 2)
+      let tot1 = avg.m2 - (result.mark2 / 2)
+      self.init(average: stdb(m1: tot, m2: tot1), result: result)
+   }
+}
+
+let set1 = block()
+println("student result is: \(set1.average.m1, set1.average.m2) \(set1.result.mark1, set1.result.mark2)")
+
+let set2 = block(average: stdb(m1: 2.0, m2: 2.0),
+   result: Stmark(mark1: 5.0, mark2: 5.0))
+println("student result is: \(set2.average.m1, set2.average.m2) \(set2.result.mark1, set2.result.mark2)")
+
+let set3 = block(avg: stdb(m1: 4.0, m2: 4.0),
+   result: Stmark(mark1: 3.0, mark2: 3.0))
+println("student result is: \(set3.average.m1, set3.average.m2) \(set3.result.mark1, set3.result.mark2)")
+ When we run the above program using playground, we get the following result ? 
+student result is: (0.0, 0.0) (0.0, 0.0)
+student result is: (2.0, 2.0) (5.0, 5.0)
+student result is: (2.5, 2.5) (3.0, 3.0)
+ Rules for Initializer Delegation Value Types Class Types Inheritance is not supported for value types like structures and enumerations. Referring other initializers is done through self.init. Inheritance is supported. Checks all stored property values are initialized. Class Inheritance and Initialization Class types have two kinds of initializers to check whether defined stored properties receive an initial value namely designated initializers and convenience initializers. Designated Initializers and Convenience Initializers Designated Initializer Convenience Initializer Considered as primary initializes for a class. Considered as supporting initialize for a class. All class properties are initialized and appropriate superclass initializer are called for further initialization. Designated initializer is called with convenience initializer to create class instance for a specific use case or input value type. At least one designated initializer is defined for every class. No need to have convenience initializers compulsory defined when the class does not require initializers. Init(parameters) { statements } convenience init(parameters) { statements } Program for Designated Initializers 
+class mainClass {
+   var no1 : Int // local storage
+   init(no1 : Int) {
+      self.no1 = no1 // initialization
+   }
+}
+class subClass : mainClass {
+   var no2 : Int // new subclass storage
+   init(no1 : Int, no2 : Int) {
+      self.no2 = no2 // initialization
+      super.init(no1:no1) // redirect to superclass
+   }
+}
+
+let res = mainClass(no1: 10)
+let print = subClass(no1: 10, no2: 20)
+
+println("res is: \(res.no1)")
+println("res is: \(print.no1)")
+println("res is: \(print.no2)")
+ When we run the above program using playground, we get the following result ? 
+res is: 10
+res is: 10
+res is: 20
+ Program for Convenience Initializers 
+class mainClass {
+   var no1 : Int // local storage
+   init(no1 : Int) {
+      self.no1 = no1 // initialization
+   }
+}
+
+class subClass : mainClass {
+   var no2 : Int
+   init(no1 : Int, no2 : Int) {
+      self.no2 = no2
+      super.init(no1:no1)
+   }
+   // Requires only one parameter for convenient method
+   override convenience init(no1: Int)  {
+      self.init(no1:no1, no2:0)
+   }
+}
+let res = mainClass(no1: 20)
+let print = subClass(no1: 30, no2: 50)
+
+println("res is: \(res.no1)")
+println("res is: \(print.no1)")
+println("res is: \(print.no2)")
+ When we run the above program using playground, we get the following result ? 
+res is: 20
+res is: 30
+res is: 50
+ Initializer Inheritance and Overriding Swift does not allow its subclasses to inherit its superclass initializers for their member types by default. Inheritance is applicable to Super class initializers only to some extent which will be discussed in Automatic Initializer Inheritance. When the user needs to have initializers defined in super class, subclass with initializers has to be defined by the user as custom implementation. When overriding has to be taken place by the sub class to the super class 'override' keyword has to be declared. 
+class sides {
+   var corners = 4
+   var description: String {
+      return "\(corners) sides"
+   }
+}
+let rectangle = sides()
+println("Rectangle: \(rectangle.description)")
+
+class pentagon: sides {
+   override init() {
+      super.init()
+      corners = 5
+   }
+}
+
+let bicycle = pentagon()
+println("Pentagon: \(bicycle.description)")
+ When we run the above program using playground, we get the following result ? 
+Rectangle: 4 sides
+Pentagon: 5 sides
+ Designated and Convenience Initializers in Action 
+class Planet {
+   var name: String
+
+   init(name: String) {
+      self.name = name
+   }
+
+   convenience init() {
+      self.init(name: "[No Planets]")
+   }
+}
+let plName = Planet(name: "Mercury")
+println("Planet name is: \(plName.name)")
+
+let noplName = Planet()
+println("No Planets like that: \(noplName.name)")
+
+class planets: Planet {
+   var count: Int
+   init(name: String, count: Int) {
+      self.count = count
+      super.init(name: name)
+   }
+
+   override convenience init(name: String) {
+      self.init(name: name, count: 1)
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Planet name is: Mercury
+No Planets like that: [No Planets]
+ Failable Initializer The user has to be notified when there are any initializer failures while defining a class, structure or enumeration values. Initialization of variables sometimes become a failure one due to ? Invalid parameter values. Absence of required external source. Condition preventing initialization from succeeding. To catch exceptions thrown by initialization method, swift produces a flexible initialize called 'failable initializer' to notify the user that something is left unnoticed while initializing the structure, class or enumeration members. Keyword to catch the failable initializer is 'init?'. Also, failable and non failable initializers cannot be defined with same parameter types and names. 
+struct studrecord {
+   let stname: String
+
+   init?(stname: String) {
+      if stname.isEmpty {return nil }
+      self.stname = stname
+   }
+}
+
+let stmark = studrecord(stname: "Swing")
+if let name = stmark {
+   println("Student name is specified")
+}
+
+let blankname = studrecord(stname: "")
+if blankname == nil {
+   println("Student name is left blank")
+}
+ When we run the above program using playground, we get the following result ? 
+Student name is specified
+Student name is left blank
+ Failable Initializers for Enumerations Swift language provides the flexibility to have Failable initializers for enumerations too to notify the user when the enumeration members are left from initializing values. 
+enum functions {
+   case a, b, c, d
+   init?(funct: String) {
+      switch funct {
+         case "one":
+            self = .a
+         case "two":
+            self = .b
+         case "three":
+            self = .c
+         case "four":
+            self = .d
+         default:
+            return nil
+      }
+   }
+}
+
+let result = functions(funct: "two")
+if result != nil {
+   println("With In Block Two")
+}
+
+let badresult = functions(funct: "five")
+if badresult == nil {
+    println("Block Does Not Exist")
+}
+ When we run the above program using playground, we get the following result ? 
+With In Block Two
+Block Does Not Exist
+ Failable Initializers for Classes A failable initializer when declared with enumerations and structures alerts an initialization failure at any circumstance within its implementation. However, failable initializer in classes will alert the failure only after the stored properties have been set to an initial value. 
+class studrecord {
+   let studname: String!
+   init?(studname: String) {
+      self.studname = studname
+      if studname.isEmpty { return nil }
+   }
+}
+if let stname = studrecord(studname: "Failable Initializers") {
+   println("Module is \(stname.studname)")
+}
+ When we run the above program using playground, we get the following result ? 
+Module is Failable Initializers
+ Overriding a Failable Initializer Like that of initialize the user also has the provision to override a superclass failable initializer inside the sub class. Super class failable initialize can also be overridden with in a sub class non-failable initializer. Subclass initializer cannot delegate up to the superclass initializer when overriding a failable superclass initializer with a non-failable subclass initialize. A non-failable initializer can never delegate to a failable initializer. The program given below describes the failable and non-failable initializers. 
+class Planet {
+   var name: String
+
+   init(name: String) {
+      self.name = name
+   }
+
+   convenience init() {
+      self.init(name: "[No Planets]")
+   }
+}
+let plName = Planet(name: "Mercury")
+println("Planet name is: \(plName.name)")
+
+let noplName = Planet()
+println("No Planets like that: \(noplName.name)")
+
+class planets: Planet {
+   var count: Int
+
+   init(name: String, count: Int) {
+      self.count = count
+      super.init(name: name)
+   }
+
+   override convenience init(name: String) {
+      self.init(name: name, count: 1)
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Planet name is: Mercury
+No Planets like that: [No Planets]
+ The init! Failable Initializer Swift provides 'init?' to define an optional instance failable initializer. To define an implicitly unwrapped optional instance of the specific type 'init!' is specified. 
+struct studrecord {
+   let stname: String
+
+   init!(stname: String) {
+      if stname.isEmpty {return nil }
+      self.stname = stname
+   }
+}
+
+let stmark = studrecord(stname: "Swing")
+if let name = stmark {
+   println("Student name is specified")
+}
+
+let blankname = studrecord(stname: "")
+if blankname == nil {
+   println("Student name is left blank")
+}
+ When we run the above program using playground, we get the following result ? 
+Student name is specified
+Student name is left blank
+ Required Initializers To declare each and every subclass of the initialize 'required' keyword needs to be defined before the init() function. 
+class classA {
+   required init() {
+      var a = 10
+      println(a)
+   }
+}
+class classB: classA {
+   required init() {
+      var b = 30
+      println(b)
+   }
+}
+let res = classA()
+let print = classB()
+ When we run the above program using playground, we get the following result ? 
+10
+30
+10
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

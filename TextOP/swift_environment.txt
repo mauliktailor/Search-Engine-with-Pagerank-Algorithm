@@ -1,0 +1,18 @@
+Swift - Environment Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Environment Advertisements Previous Page Next Page   Try it Option Online We have set up the Swift Programming environment online, so that you can compile and execute all the available examples online. It gives you confidence in what you are reading and enables you to verify the programs with different options. Feel free to modify any example and execute it online. Try the following example using our online compiler available at CodingGround 
+import Cocoa
+
+/* My first program in Swift */
+var myString = "Hello, World!"
+
+println(myString)
+ For most of the examples given in this tutorial, you will find a Try it option in our website code sections at the top right corner that will take you to the online compiler. So just make use of it and enjoy your learning. Local Environment Setup Swift provides a Playground platform for learning purpose and we are going to setup the same. You need xCode software to start your Swift coding in Playground. Once you are comfortable with the concepts of Swift, you can use xCode IDE for iSO/OS x application development. To start with, we consider you already have an account at Apple Developer website. Once you are logged in, go to the following link ? Download for Apple Developers This will list down a number of software available as follows ? Now select xCode and download it by clicking on the given link near to disc image. After downloading the dmg file, you can install it by simply double-clicking on it and following the given instructions. Finally, follow the given instructions and drop xCode icon into the Application folder. Now you have xCode installed on your machine. Next, open Xcode from the Application folder and proceed after accepting the terms and conditions. If everything is fine, you will get the following screen ? Select Get started with a playground option and enter a name for playground and select iOS as platform. Finally, you will get the Playground window as follows ? Following is the code taken from the default Swift Playground Window. 
+import UIKit
+
+var str = "Hello, playground"
+ If you create the same program for OS X program, then it will include import Cocoa and the program will look like as follows ? 
+import Cocoa
+
+var str = "Hello, playground"
+ When the above program gets loaded, it should display the following result in Playground result area (Right Hand Side). 
+Hello, playground
+ Congratulations, you have your Swift programming environment ready and you can proceed with your learning vehicle "Tutorials Point". Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

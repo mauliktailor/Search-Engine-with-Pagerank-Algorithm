@@ -1,0 +1,109 @@
+Swift Closures Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Closures Advertisements Previous Page Next Page   Closures in Swift are similar to that of self-contained functions organized as blocks and called anywhere like C and Objective C languages. Constants and variable references defined inside the functions are captured and stored in closures. Functions are considered as special cases of closures and it takes the following three forms ? Global Functions Nested Functions Closure Expressions Have a name. Do not capture any values Have a name. Capture values from enclosing function Unnamed Closures capture values from the adjacent blocks Closure expressions in Swift language follow crisp, optimization and lightweight syntax styles which includes. Inferring parameter and return value types from context. Implicit returns from single-expression closures. Shorthand argument names and Trailing closure syntax Syntax Following is a generic syntax to define closure which accepts parameters and returns a data type ? 
+{(parameters) -> return type in
+   statements
+}
+ Following is a simple example ? 
+let studname = { println("Welcome to Swift Closures") }
+studname()
+ When we run the above program using playground, we get the following result ? 
+Welcome to Swift Closures
+ The following closure accepts two parameters and returns a Bool value ? 
+{(Int, Int) -> Bool in
+   Statement1
+   Statement 2
+    ---
+   Statement n
+}
+ Following is a simple example ? 
+let divide = {(val1: Int, val2: Int) -> Int in 
+   return val1 / val2 
+}
+let result = divide(200, 20)
+println (result)
+ When we run the above program using playground, we get the following result ? 
+10
+ Expressions in Closures Nested functions provide a convenient way of naming and defining blocks of code. Instead of representing the whole function declaration and name constructs are used to denote shorter functions. Representing the function in a clear brief statement with focused syntax is achieved through closure expressions. Ascending Order Program Sorting a string is achieved by the Swifts key reserved function "sorted" which is already available in the standard library. The function will sort the given strings in the ascending order and returns the elements in a new array with same size and data type mentioned in the old array. The old array remains the same. Two arguments are represented inside the sorted function ? Values of Known type represented as arrays. Array contents (Int, Int) and returns a Boolean value (Bool) if the array is sorted properly it will return true value otherwise it will return false. A normal function with input string is written and passed to the sorted function to get the strings sorted to new array which is shown below ? 
+func ascend(s1: String, s2: String) -> Bool {
+   return s1 > s2
+}
+let stringcmp = ascend("swift", "great")
+println (stringcmp)
+ When we run the above program using playground, we get the following result ? 
+true
+ The initial array to be sorted for icecream is given as "Swift" and "great". Function to sort the array is declared as string datatype and its return type is mentioned as Boolean. Both the strings are compared and sorted in ascending order and stored in a new array. If the sorting is performed successful the function will return a true value else it will return false. Closure expression syntax uses ? constant parameters, variable parameters, and inout parameters. Closure expression did not support default values. Variadic parameters and Tuples can also be used as parameter types and return types. 
+let sum = {(no1: Int, no2: Int) -> Int in 
+   return no1 + no2 
+}
+let digits = sum(10, 20)
+println(digits)
+ When we run the above program using playground, we get the following result ? 
+30
+ The parameters and return type declarations mentioned in the function statement can also be represented by the inline closure expression function with 'in' keyword. Once declaring parameter and return types 'in' keyword is used to denote that the body of the closure. Single Expression Implicit Returns Here, the function type of the sorted function's second argument makes it clear that a Bool value must be returned by the closure. Because the closure's body contains a single expression (s1 > s2) that returns a Bool value, there is no ambiguity, and the return keyword can be omitted. To return a Single expression statement in expression closures 'return' keyword is omitted in its declaration part. 
+let count = [5, 10, -6, 75, 20]
+var descending = sorted(count, { n1, n2 in n1 > n2 })
+var ascending = sorted(count, { n1, n2 in n1 < n2 })
+
+println(descending)
+println(ascending)
+ When we run the above program using playground, we get the following result ? 
+[75, 20, 10, 5, -6]
+[-6, 5, 10, 20, 75]
+ The statement itself clearly defines that when string1 is greater than string 2 return true otherwise false hence return statement is omitted here. Known Type Closures Consider the addition of two numbers. We know that addition will return the integer datatype. Hence known type closures are declared as ? 
+let sub = {(no1: Int, no2: Int) -> Int in 
+   return no1 - no2 
+}
+let digits = sub(10, 20)
+println(digits)
+ When we run the above program using playground, we get the following result ? 
+-10
+ Declaring Shorthand Argument Names as Closures Swift automatically provides shorthand argument names to inline closures, which can be used to refer to the values of the closure's arguments by the names $0, $1, $2, and so on. 
+var shorthand: (String, String) -> String
+shorthand = { $1 }
+println(shorthand("100", "200"))
+ Here, $0 and $1 refer to the closure's first and second String arguments. When we run the above program using playground, we get the following result ? 
+200
+ Swift facilitates the user to represent Inline closures as shorthand argument names by representing $0, $1, $2 --- $n. Closures argument list is omitted in definition section when we represent shorthand argument names inside closure expressions. Based on the function type the shorthand argument names will be derived. Since the shorthand argument is defined in expression body the 'in' keyword is omitted. Closures as Operator Functions Swift provides an easy way to access the members by just providing operator functions as closures. In the previous examples keyword 'Bool' is used to return either 'true' when the strings are equal otherwise it returns 'false'. The expression is made even simpler by operator function in closure as ? 
+let numb = [98, -20, -30, 42, 18, 35]
+var sortedNumbers = numb.sorted({
+   (left: Int, right: Int) -> Bool in
+   return left < right
+})
+let asc = numb.sorted(<)
+println(asc)
+ When we run the above program using playground, we get the following result ? 
+[-30, -20, 18, 35, 42, 98]
+ Closures as Trailers Passing the function's final argument to a closure expression is declared with the help of 'Trailing Closures'. It is written outside the function () with {}. Its usage is needed when it is not possible to write the function inline on a single line. 
+reversed = sorted(names) { $0 > $1}
+ where {$0 > $1} are represented as trailing closures declared outside (names). 
+import Foundation
+var letters = ["North", "East", "West", "South"]
+ 
+let twoletters = letters.map({ (state: String) -> String in
+   return state.substringToIndex(advance(state.startIndex, 2)).uppercaseString
+})
+let stletters = letters.map() { $0.substringToIndex(advance($0.startIndex, 2)).uppercaseString }
+println(stletters)
+ When we run the above program using playground, we get the following result ? 
+[NO, EA, WE, SO]
+ Capturing Values and Reference Types In Swift, capturing constants and variables values is done with the help of closures. It further refers and modify the values for those constants and variables inside the closure body even though the variables no longer exists. Capturing constant and variable values is achieved by using nested function by writing function with in the body of other function. A nested function captures ? Outer function arguments. Capture constants and variables defined within the Outer function. In Swift, when a constant or a variable is declared inside a function, reference to that variables are also automatically created by the closure. It also provides the facility to refer more than two variables as the same closure as follows ? 
+let decrem = calcDecrement(forDecrement: 18)
+decrem()
+ Here oneDecrement and Decrement variables will both point the same memory block as closure reference. 
+func calcDecrement(forDecrement total: Int) -> () -> Int {
+   var overallDecrement = 100
+   func decrementer() -> Int {
+      overallDecrement -= total
+      println(overallDecrement)
+      return overallDecrement
+   }
+   return decrementer
+}
+let decrem = calcDecrement(forDecrement: 18)
+decrem()
+decrem()
+decrem()
+ When we run the above program using playground, we get the following result ? 
+82
+64
+46
+ When each and every time the outer function calcDecrement is called it invokes the decrementer() function and decrements the value by 18 and returns the result with the help of outer function calcDecrement. Here calcDecrement acts as a closure. Even though the function decrementer() does not have any arguments closure by default refers to variables 'overallDecrement' and 'total' by capturing its existing values. The copy of the values for the specified variables are stored with the new decrementer() function. Swift handles memory management functions by allocating and deallocating memory spaces when the variables are not in use. Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

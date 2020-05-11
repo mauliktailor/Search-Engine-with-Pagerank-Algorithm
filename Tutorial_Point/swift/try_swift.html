@@ -1,0 +1,278 @@
+<!DOCTYPE html>  
+<html>  
+
+<!-- Mirrored from www.tutorialspoint.com/swift/try_swift.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>  
+<meta charset="UTF-8">  
+<title>Execute Apple's Swift Online</title>
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<meta name="Description" content="Execute Apple's Swift Online" />
+<base  />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+<script type="text/javascript" src="../scripts/easyui/jquery-1.8.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../scripts/easyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="../scripts/easyui/themes/icon.css">
+<script type="text/javascript" src="../scripts/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery.ba-resize.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../scripts/col.css">
+<script type="text/javascript" src="../scripts/jquery.hotkeys.js"></script>
+<script type="text/javascript">
+// Binding keys
+$(document).ready(function(){
+   $(document).bind('keydown', 'ctrl+e', function assets() {
+      submitForm();
+      return false;
+   });
+   $(document).bind('keydown', 'meta+e', function assets() {
+      submitForm();
+      return false;
+   });
+});
+$(window).load(function () {
+   $("#cc").css({"visibility":"visible"});
+   $("#cc").fadeIn(1000);
+   $("#loading").css({"visibility":"hidden"});
+});
+$(window).load(function(){
+      var newwidth = $(window).width();
+      newwidth = newwidth / 2.5;
+      var e = $("#cc").layout('panel','east');
+      e.panel('resize',{width:newwidth});
+      $('#cc').layout('resize');
+});
+</script>
+<script src="../../www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+</script>
+</head>
+<body class="easyui-layout" id="cc">
+<form id="ff">
+<input type="hidden" name="lang"/>
+<input type="hidden" name="code"/>
+<input type="hidden" name="support"/>
+<input type="hidden" name="util"/>
+<input type="hidden" name="extra"/>
+<input type="hidden" name="script"/>
+<input type="hidden" name="inputs"/>
+<input type="hidden" name="filename"/>
+<input type="hidden" name="process" value="1502874385_25983"/>
+<input type="hidden" name="root" value="/web/com/1502874385_25983"/>
+<div id="loading"></div>
+<div data-options="region:'north',split:false,border:false" style="height:50px; background:#f05c02 !important;"><!-- TOP MENU STARTS -->
+<div style="padding:0px;">
+<img src="../images/final-logo.png" style="display:inline;float:left;height:50px;"/><h1 id="version">Swift 1.2</h1>
+</div>  
+</div><!-- TOP MENU ENDS -->
+<div data-options="region:'south',iconCls:'icon-result',title:'Result',split:true,tools:'#tab-tools2',toolPosition:'right'" id="bottom" style="height:300px;"><!-- BOTTOM PANEL STARTS --> 
+<iframe id="view" name="contentview" style="background:#fff;position:relative;width:100%;height:99%;border:0px solid #aaa;margin:0px;padding:0px;overflow:auto;">
+</iframe>
+</div><!-- BOTTOM PANEL ENDS --> 
+<div data-options="region:'center'" style="padding:0px;" id="left"><!-- LEFT STARTS -->
+<div data-options="fit:true,border:false,tools:'#tab-tools',toolPosition:'left'" id="tt" class="easyui-tabs">  
+<div title="main.swift" style="padding:0px;">  
+<pre id="code" class="editclass"></pre>
+</div> 
+<div title="Support File" style="padding:0px;">  
+<pre id="supportcode" class="editclass"></pre>
+</div> 
+<div title="Util File" style="padding:0px;">  
+<pre id="utilcode" class="editclass"></pre>
+</div> 
+<div title="Extra File" style="padding:0px;">
+<pre id="extracode" class="editclass"></pre>
+</div>
+<div title="Input File" style="padding:0px;" id="inputfile">  
+<pre id="inputs" class="editclass"></pre>
+</div> 
+</div>
+<div id="tab-tools" style="border-top:0px; border-right:0px;">
+      <div id='wait' style='display:none'>
+          <img style="margin-left:4px;margin-top:0px;width:24px; height:24px;" src='../images/loading.gif'/>
+      </div>
+       <a href="javascript:void(0)" onclick="javascript:submitForm();return false" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-compile'" target="view" style="width:65px;white-space: nowrap;"><b>Execute</b></a></div>
+</div><!-- LEFT ENDS -->
+</form>
+<script src="../codingground/ace/src-min/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+   var editors = {};
+   var element = window.parent.$("#source");
+   $("#code").text($(element).text());
+
+   element = window.parent.$("#supportsource");
+   var supportcode = $(element).text();
+   $("#supportcode").text(supportcode);
+
+   element = window.parent.$("#utilsource");
+   var utilcode = $(element).text();
+   $("#utilcode").text(utilcode);
+
+   element = window.parent.$("#extrasource");
+   var extracode = $(element).text();
+   $("#extracode").text(extracode);
+
+   element = window.parent.$("#inputs");
+   var inputs = $(element).text();
+   $("#inputs").text(inputs);
+
+   element = window.parent.$("#filename");
+   var filename = $(element).text();
+   var parts = filename.split("_");
+   $("[name='filename']").val(filename);
+   $("#inputfile").attr("title", parts[0] + "." + parts[1]);
+
+   editors['code'] = new ace.edit('code');
+   editors['code'].setTheme("ace/theme/crimson_editor");
+   editors['code'].getSession().setMode("ace/mode/objectivec");
+   editors['code'].getSession().setUseWrapMode(true);
+
+   editors['supportcode'] = new ace.edit('supportcode');
+   editors['supportcode'].setTheme("ace/theme/crimson_editor");
+   editors['supportcode'].getSession().setMode("ace/mode/objectivec");
+   editors['supportcode'].getSession().setUseWrapMode(true);
+
+   editors['utilcode'] = new ace.edit('utilcode');
+   editors['utilcode'].setTheme("ace/theme/crimson_editor");
+   editors['utilcode'].getSession().setMode("ace/mode/objectivec");
+   editors['utilcode'].getSession().setUseWrapMode(true);
+
+   editors['extracode'] = new ace.edit('extracode');
+   editors['extracode'].setTheme("ace/theme/crimson_editor");
+   editors['extracode'].getSession().setMode("ace/mode/objectivec");
+   editors['extracode'].getSession().setUseWrapMode(true);
+
+   editors['inputs'] = new ace.edit('inputs');
+   editors['inputs'].setTheme("ace/theme/crimson_editor");
+   editors['inputs'].getSession().setMode("ace/mode/text");
+   editors['inputs'].getSession().setUseWrapMode(true);
+
+   $("#code").resize(function() {
+        editors['code'].resize(true);
+   });
+   $("#supportcode").resize(function() {
+       editors['supportcode'].resize(true);
+   });
+   $("#utilcode").resize(function() {
+       editors['utilcode'].resize(true);
+   });
+  $("#extracode").resize(function() {
+       editors['extracode'].resize(true);
+   });
+   $("#inputs").resize(function() {
+       editors['inputs'].resize(true);
+   });
+   $( "#tt" ).tabs({
+      onSelect: function( title, index ) {
+         if( index == 0 ){
+            editors['code'].resize(true);
+            editors['code'].focus();
+         }else if( index == 1 ){
+            editors['supportcode'].resize(true);
+            editors['supportcode'].focus();
+         }else if( index == 2 ){
+            editors['utilcode'].resize(true);
+            editors['utilcode'].focus();
+         }else if( index == 3 ){
+            editors['extracode'].resize(true);
+            editors['extracode'].focus();
+         }else if( index == 4 ){
+            editors['inputs'].resize(true);
+            editors['inputs'].focus();
+         }
+      }
+   });
+   $('#tt').tabs('getTab', 1).panel('options').tab.addClass('tabs-hide');
+   $('#tt').tabs('getTab', 2).panel('options').tab.addClass('tabs-hide');
+   $('#tt').tabs('getTab', 3).panel('options').tab.addClass('tabs-hide');
+   $('#tt').tabs('getTab', 4).panel('options').tab.addClass('tabs-hide');
+   if( supportcode ){
+      $('#tt').tabs('getTab', 1).panel('options').tab.removeClass('tabs-hide');
+   }
+   if( utilcode ){
+      $('#tt').tabs('getTab', 2).panel('options').tab.removeClass('tabs-hide');
+   }
+   if( extracode ){
+      $('#tt').tabs('getTab', 3).panel('options').tab.removeClass('tabs-hide');
+   }
+   if( inputs ){
+      $('#tt').tabs('getTab', 4).panel('options').tab.removeClass('tabs-hide');
+   }
+   function submitForm(){
+      var lang = "swift";
+      $("[name='lang']").val("swift");
+      $("[name='code']").val(editors['code'].getValue());
+      if( supportcode ){
+         $("[name='support']").val(editors['supportcode'].getValue());
+      }
+      if( utilcode ){
+         $("[name='util']").val(editors['utilcode'].getValue());
+      }
+      if( extracode ){
+         $("[name='extra']").val(editors['extracode'].getValue());
+      }
+      if( inputs ){
+         $("[name='inputs']").val(editors['inputs'].getValue());
+      }
+      $("[name='script']").val("execute_new");
+      jQuery.support.cors = true;
+      $('#wait').show(); 
+      var url = "https://tools.tutorialspoint.com/execute_new.php";
+      if( lang == "swift" ){
+         url = "https://mac.tutorialspoint.com/execute_new.php";
+      }
+      $.ajax({
+        type: "POST",
+        cache: false,
+        crossDomain: true,
+        url: url,
+        target: "view",
+        data: $("#ff").serialize(),
+        success:function(data)
+        {
+            $('#view').contents().find("html").html(data);
+            $('#wait').hide(); 
+            return false; 
+        },
+        error:function (data, status, error) {
+           alert(error);
+           return false; 
+        }
+      });
+      return false;
+   }    
+   submitForm();
+   $(function(){
+      $('#cc').layout('panel','south').panel({
+          onResize:function(){
+              editors['code'].resize(true);
+              editors['supportcode'].resize(true);
+              editors['utilcode'].resize(true);
+              editors['extracode'].resize(true);
+              editors['inputs'].resize(true);
+          },
+          onExpand:function(){
+              editors['code'].resize(true);
+              editors['supportcode'].resize(true);
+              editors['utilcode'].resize(true);
+              editors['extracode'].resize(true);
+              editors['inputs'].resize(true);
+          },
+          onCollapse:function(){
+              editors['code'].resize(true);
+              editors['supportcode'].resize(true);
+              editors['utilcode'].resize(true);
+              editors['extracode'].resize(true);
+              editors['inputs'].resize(true);
+          },
+      });
+   });
+</script>
+</div>
+</div>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/swift/try_swift.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Aug 2017 16:16:07 GMT -->
+</html>

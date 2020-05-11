@@ -1,0 +1,176 @@
+Swift Inheritance Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Inheritance Advertisements Previous Page Next Page   The ability to take than more form is defined as Inheritance. Generally a class can inherit methods, properties and functionalities from another class. Classes can be further categorized in to sub class and super class. Sub Class ? when a class inherits properties, methods and functions from another class it is called as sub class Super Class ? Class containing properties, methods and functions to inherit other classes from itself is called as a super class Swift classes contain superclass which calls and access methods, properties, functions and overriding methods. Also, property observers are also used to add a property and modify the stored or computed property methods. Base Class A Class that does not inherit methods, properties or functions from another class is called as 'Base Class'. 
+class StudDetails {
+   var stname: String!
+   var mark1: Int!
+   var mark2: Int!
+   var mark3: Int!
+   init(stname: String, mark1: Int, mark2: Int, mark3: Int) {
+      self.stname = stname
+      self.mark1 = mark1
+      self.mark2 = mark2
+      self.mark3 = mark3
+   }
+}
+let stname = "swift"
+let mark1 = 98
+let mark2 = 89
+let mark3 = 76
+
+println(stname)
+println(mark1)
+println(mark2)
+println(mark3)
+ When we run the above program using playground, we get the following result ? 
+swift
+98
+89
+76
+ Class with classname StudDetails are defined as a base class here which is used to contain students name, and three subjects mark as mark1, mark2 and mark3. 'let' keyword is used to initialize the value for the base class and base class value is displayed in the playground with the help of 'println' function. Subclass The act of basing a new class on an existing class is defined as 'Subclass'. The subclass inherits the properties, methods and functions of its base class. To define a subclass ':' is used before the base class name. 
+class StudDetails {
+   var mark1: Int;
+   var mark2: Int;
+
+   init(stm1:Int, results stm2:Int) {
+      mark1 = stm1;
+      mark2 = stm2;
+   }
+
+   func print() {
+      println("Mark1:\(mark1), Mark2:\(mark2)")
+   }
+}
+
+class display : StudDetails {
+   init() {
+      super.init(stm1: 93, results: 89)
+   }
+}
+
+let marksobtained = display()
+marksobtained.print()
+ When we run the above program using playground, we get the following result ? 
+Mark1:93, Mark2:89
+ Class 'StudDetails' is defined as super class where student marks are declared and the subclass 'display' is used to inherit the marks from its super class. Sub class defines students marks and calls the print() method to display the students mark. Overriding Accessing the super class instance, type methods, instance, type properties and subscripts subclass provides the concept of overriding. 'override' keyword is used to override the methods declared in the superclass. Access to Super class Methods, Properties and Subscripts 'super' keyword is used as a prefix to access the methods, properties and subscripts declared in the super class. Overriding Access to methods, properties and subscripts Methods super.somemethod() Properties super.someProperty() Subscripts super[someIndex] Methods Overriding Inherited instance and type methods can be overridden by the 'override' keyword to our methods defined in our subclass. Here print() is overridden in subclass to access the type property mentioned in the super class print(). Also new instance of cricket() super class is created as 'cricinstance'. 
+class cricket {
+   func print() {
+      println("Welcome to Swift Super Class")
+   }
+}
+
+class tennis: cricket {
+   override func print() {
+      println("Welcome to Swift Sub Class")
+   }
+}
+
+let cricinstance = cricket()
+cricinstance.print()
+
+let tennisinstance = tennis()
+tennisinstance.print()
+ When we run the above program using playground, we get the following result ? 
+Welcome to Swift Super Class
+Welcome to Swift Sub Class
+ Property Overriding You can override an inherited instance or class property to provide your own custom getter and setter for that property, or to add property observers to enable the overriding property to observe when the underlying property value changes. Overriding Property Getters and Setters Swift allows the user to provide custom getter and setter to override the inherited property whether it is a stored or computed property. The subclass does not know the inherited property name and type. Therefore it is essential that the user needs to specify in subclass, the name and type of the overriding property specified in super class. This can be done in two ways ? When setter is defined for overriding property the user has to define getter too. When we don't want to modify the inherited property getter, we can simply pass the inherited value by the syntax 'super.someProperty' to the super class. 
+class Circle {
+   var radius = 12.5
+   var area: String {
+      return "of rectangle for \(radius) "
+   }
+}
+
+class Rectangle: Circle {
+   var print = 7
+   override var area: String {
+      return super.area + " is now overridden as \(print)"
+   }
+}
+
+let rect = Rectangle()
+rect.radius = 25.0
+rect.print = 3
+println("Radius \(rect.area)")
+ When we run the above program using playground, we get the following result ? 
+Radius of rectangle for 25.0  is now overridden as 3
+ Overriding Property Observers When a new property needs to be added for an inherited property, 'property overriding' concept is introduced in Swift. This notifies the user when the inherited property value is altered. But overriding is not applicable for inherited constant stored properties and inherited read-only computed properties. 
+class Circle {
+   var radius = 12.5
+   var area: String {
+      return "of rectangle for \(radius) "
+   }
+}
+
+class Rectangle: Circle {
+   var print = 7
+   override var area: String {
+      return super.area + " is now overridden as \(print)"
+   }
+}
+
+
+let rect = Rectangle()
+rect.radius = 25.0
+rect.print = 3
+println("Radius \(rect.area)")
+
+class Square: Rectangle {
+   override var radius: Double {
+      didSet {
+         print = Int(radius/5.0)+1
+      }
+   }
+}
+
+
+let sq = Square()
+sq.radius = 100.0
+println("Radius \(sq.area)")
+ When we run the above program using playground, we get the following result ? 
+Radius of rectangle for 25.0  is now overridden as 3
+Radius of rectangle for 100.0  is now overridden as 21
+ Final Property to prevent Overriding When the user need not want others to access super class methods, properties or subscripts swift introduces 'final' property to prevent overriding. Once 'final' property is declared the subscripts won't allow the super class methods, properties and its subscripts to be overridden. There is no provision to have 'final' property in 'super class'. When 'final' property is declared the user is restricted to create further sub classes. 
+final class Circle {
+   final var radius = 12.5
+   var area: String {
+      return "of rectangle for \(radius) "
+   }
+}
+class Rectangle: Circle {
+   var print = 7
+   override var area: String {
+      return super.area + " is now overridden as \(print)"
+   }
+}
+
+let rect = Rectangle()
+rect.radius = 25.0
+rect.print = 3
+println("Radius \(rect.area)")
+
+class Square: Rectangle {
+   override var radius: Double {
+      didSet {
+         print = Int(radius/5.0)+1
+      }
+   }
+}
+
+let sq = Square()
+sq.radius = 100.0
+println("Radius \(sq.area)")
+ When we run the above program using playground, we get the following result ? 
+<stdin>:14:18: error: var overrides a 'final' var
+    override var area: String {
+                 ^
+<stdin>:7:9: note: overridden declaration is here
+    var area: String {
+        ^
+<stdin>:12:11: error: inheritance from a final class 'Circle'
+    class Rectangle: Circle {
+          ^
+<stdin>:25:14: error: var overrides a 'final' var
+override var radius: Double {
+             ^
+<stdin>:6:14: note: overridden declaration is here
+   final var radius = 12.5
+ Since the super class is declared as 'final' and its data types are also declared as 'final' the program won't allow to create subclasses further and it will throw errors. Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

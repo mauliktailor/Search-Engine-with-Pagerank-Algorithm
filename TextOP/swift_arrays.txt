@@ -1,0 +1,142 @@
+Swift Arrays Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Arrays Advertisements Previous Page Next Page   Swift arrays are used to store ordered lists of values of the same type. Swift puts strict checking which does not allow you to enter a wrong type in an array even by mistake. If you assign a created array to a variable then its always mutable which means you can change it by adding, removing, or changing its items but if you assign an array to a constant then that array is immutable, and its size and contents cannot be changed. Creating Arrays You can create an empty array of a certain type using the following initializer syntax ? 
+var someArray = [SomeType]()
+ Here is the syntax to create an array of a given size a* and initialize it with a value ? 
+var someArray = [SomeType](count: NumbeOfElements, repeatedValue: InitialValue)
+ You can use the following statement to create an empty array of Int type having 3 elements and the initial value as zero ? 
+var someInts = [Int](count: 3, repeatedValue: 0)
+ Following is one more example to create an array of three elements and assign three values to that array ? 
+var someInts:[Int] = [10, 20, 30]
+ Accessing Arrays You can retrieve a value from an array by using subscript syntax, passing the index of the value you want to retrieve within square brackets immediately after the name of the array as follows ? 
+var someVar = someArray[index]
+ Here, the index starts from 0 which means the first element can be accessed using the index as 0, the second element can be accessed using the index as 1 and so on. The following example shows how to create, initialize, and access arrays ? 
+import Cocoa
+
+var someInts = [Int](count: 3, repeatedValue: 10)
+
+var someVar = someInts[0]
+
+println( "Value of first element is \(someVar)" )
+println( "Value of second element is \(someInts[1])" )
+println( "Value of third element is \(someInts[2])" )
+ When the above code is compiled and executed, it produces the following result ? 
+Value of first element is 10
+Value of second element is 10
+Value of third element is 10
+ Modifying Arrays You can use append() method or addition assignment operator (+=) to add a new item at the end of an array. Take a look at the following example. Here, initially, we create an empty array and then add new elements into the same array ? 
+import Cocoa
+
+var someInts = [Int]()
+
+someInts.append(20)
+someInts.append(30)
+someInts += [40]
+
+var someVar = someInts[0]
+
+println( "Value of first element is \(someVar)" )
+println( "Value of second element is \(someInts[1])" )
+println( "Value of third element is \(someInts[2])" )
+ When the above code is compiled and executed, it produces the following result ? 
+Value of first element is 20
+Value of second element is 30
+Value of third element is 40
+ You can modify an existing element of an Array by assigning a new value at a given index as shown in the following example ? 
+import Cocoa
+
+var someInts = [Int]()
+
+someInts.append(20)
+someInts.append(30)
+someInts += [40]
+
+// Modify last element
+someInts[2] = 50
+
+var someVar = someInts[0]
+
+println( "Value of first element is \(someVar)" )
+println( "Value of second element is \(someInts[1])" )
+println( "Value of third element is \(someInts[2])" )
+ When the above code is compiled and executed, it produces the following result ? 
+Value of first element is 20
+Value of second element is 30
+Value of third element is 50
+ Iterating Over an Array You can use for-in loop to iterate over the entire set of values in an array as shown in the following example ? 
+import Cocoa
+
+var someStrs = [String]()
+
+someStrs.append("Apple")
+someStrs.append("Amazon")
+someStrs += ["Google"]
+
+for item in someStrs {
+   println(item)
+}
+ When the above code is compiled and executed, it produces the following result ? 
+Apple
+Amazon
+Google
+ You can use enumerate() function which returns the index of an item along with its value as shown below in the following example ? 
+import Cocoa
+
+var someStrs = [String]()
+
+someStrs.append("Apple")
+someStrs.append("Amazon")
+someStrs += ["Google"]
+
+for (index, item) in enumerate(someStrs) {
+   println("Value at index = \(index) is \(item)")
+}
+ When the above code is compiled and executed, it produces the following result ? 
+Value at index = 0 is Apple
+Value at index = 1 is Amazon
+Value at index = 2 is Google
+ Adding Two Arrays You can use the addition operator (+) to add two arrays of the same type which will yield a new array with a combination of values from the two arrays as follows ? 
+import Cocoa
+
+var intsA = [Int](count:2, repeatedValue: 2)
+var intsB = [Int](count:3, repeatedValue: 1)
+
+var intsC = intsA + intsB
+
+for item in intsC {
+   println(item)
+}
+ When the above code is compiled and executed, it produces the following result ? 
+2
+2
+1
+1
+1
+ The count Property You can use the read-only count property of an array to find out the number of items in an array shown below ? 
+import Cocoa
+
+var intsA = [Int](count:2, repeatedValue: 2)
+var intsB = [Int](count:3, repeatedValue: 1)
+
+var intsC = intsA + intsB
+
+println("Total items in intsA = \(intsA.count)")
+println("Total items in intsB = \(intsB.count)")
+println("Total items in intsC = \(intsC.count)")
+ When the above code is compiled and executed, it produces the following result ? 
+Total items in intsA = 2
+Total items in intsB = 3
+Total items in intsC = 5
+ The empty Property You can use the read-only empty property of an array to find out whether an array is empty or not as shown below ? 
+import Cocoa
+
+var intsA = [Int](count:2, repeatedValue: 2)
+var intsB = [Int](count:3, repeatedValue: 1)
+var intsC = [Int]()
+
+println("intsA.isEmpty = \(intsA.isEmpty)")
+println("intsB.isEmpty = \(intsB.isEmpty)")
+println("intsC.isEmpty = \(intsC.isEmpty)")
+ When the above code is compiled and executed, it produces the following result ? 
+intsA.isEmpty = false
+intsB.isEmpty = false
+intsC.isEmpty = true
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

@@ -1,0 +1,17 @@
+Swift for-in Loop Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - for-in Loop Advertisements Previous Page Next Page   The for-in loop iterates over collections of items, such as ranges of numbers, items in an array, or characters in a string ? Syntax The syntax of a for-in loop in Swift programming language is ? 
+for index in var {
+   statement(s)
+}
+ Flow Diagram Example 
+import Cocoa
+
+var someInts:[Int] = [10, 20, 30]
+
+for index in someInts {
+   println( "Value of  index is \(index)")
+}
+ When the above code is executed, it produces the following result ? 
+Value of index is 10
+Value of index is 20
+Value of index is 30
+ Previous Page Print Next Page   swift_loops.htm Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

@@ -1,0 +1,334 @@
+Swift Type Casting Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Type Casting Advertisements Previous Page Next Page   To validate the type of an instance 'Type Casting' comes into play in Swift language. It is used to check whether the instance type belongs to a particular super class or subclass or it is defined in its own hierarchy. Swift type casting provides two operators 'is' to check the type of a value and 'as' and to cast the type value to a different type. Type casting also checks whether the instance type follows particular protocol conformance standard. Defining a Class Hierarchy Type casting is used to check the type of instances to find out whether it belongs to particular class type. Also, it checks hierarchy of classes and its subclasses to check and cast those instances to make it as a same hierarchy. 
+class Subjects {
+   var physics: String
+   init(physics: String) {
+      self.physics = physics
+   }
+}
+
+class Chemistry: Subjects {
+   var equations: String
+   init(physics: String, equations: String) {
+      self.equations = equations
+      super.init(physics: physics)
+   }
+}
+
+class Maths: Subjects {
+   var formulae: String
+   init(physics: String, formulae: String) {
+      self.formulae = formulae
+      super.init(physics: physics)
+   }
+}
+
+let sa = [
+   Chemistry(physics: "solid physics", equations: "Hertz"),
+   Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")]
+
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+println("Instance physics is: \(samplechem.physics)")
+println("Instance equation is: \(samplechem.equations)")
+
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+println("Instance physics is: \(samplemaths.physics)")
+println("Instance formulae is: \(samplemaths.formulae)")
+ When we run the above program using playground, we get the following result ? 
+Instance physics is: solid physics
+Instance equation is: Hertz
+Instance physics is: Fluid Dynamics
+Instance formulae is: Giga Hertz
+ Type Checking Type checking is done with the 'is' operator. The 'is' type check operator checks whether the instance belongs to particular subclass type and returns 'true' if it belongs to that instance else it will return 'false'. 
+class Subjects {
+   var physics: String
+   init(physics: String) {
+      self.physics = physics
+   }
+}
+
+class Chemistry: Subjects {
+   var equations: String
+   init(physics: String, equations: String) {
+      self.equations = equations
+      super.init(physics: physics)
+   }
+}
+
+class Maths: Subjects {
+   var formulae: String
+   init(physics: String, formulae: String) {
+      self.formulae = formulae
+      super.init(physics: physics)
+   }
+}
+
+let sa = [
+   Chemistry(physics: "solid physics", equations: "Hertz"),
+   Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz"),
+   Chemistry(physics: "Thermo physics", equations: "Decibels"),
+   Maths(physics: "Astro Physics", formulae: "MegaHertz"),
+   Maths(physics: "Differential Equations", formulae: "Cosine Series")]
+
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+println("Instance physics is: \(samplechem.physics)")
+println("Instance equation is: \(samplechem.equations)")
+
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+println("Instance physics is: \(samplemaths.physics)")
+println("Instance formulae is: \(samplemaths.formulae)")
+
+var chemCount = 0
+var mathsCount = 0
+for item in sa {
+   if item is Chemistry {
+      ++chemCount
+   }else if item is Maths {
+      ++mathsCount
+   }
+}
+
+println("Subjects in chemistry contains \(chemCount) topics and maths contains \(mathsCount) topics")
+ When we run the above program using playground, we get the following result ? 
+Instance physics is: solid physics
+Instance equation is: Hertz
+Instance physics is: Fluid Dynamics
+Instance formulae is: Giga Hertz
+Subjects in chemistry contains 2 topics and maths contains 3 topics
+ Downcasting Downcasting the subclass type can be done with two operators (as? and as!).'as?' returns an optional value when the value returns nil. It is used to check successful downcast. 'as!' returns force unwrapping as discussed in the optional chaining when the downcasting returns nil value. It is used to trigger runtime error in case of downcast failure 
+class Subjects {
+   var physics: String
+   init(physics: String) {
+      self.physics = physics
+   }
+}
+
+class Chemistry: Subjects {
+   var equations: String
+   init(physics: String, equations: String) {
+      self.equations = equations
+      super.init(physics: physics)
+   }
+}
+
+class Maths: Subjects {
+   var formulae: String
+   init(physics: String, formulae: String) {
+      self.formulae = formulae
+      super.init(physics: physics)
+   }
+}
+
+let sa = [
+   Chemistry(physics: "solid physics", equations: "Hertz"),
+   Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz"),
+   Chemistry(physics: "Thermo physics", equations: "Decibels"),
+   Maths(physics: "Astro Physics", formulae: "MegaHertz"),
+   Maths(physics: "Differential Equations", formulae: "Cosine Series")]
+
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+println("Instance physics is: \(samplechem.physics)")
+println("Instance equation is: \(samplechem.equations)")
+
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+println("Instance physics is: \(samplemaths.physics)")
+println("Instance formulae is: \(samplemaths.formulae)")
+
+var chemCount = 0
+var mathsCount = 0
+
+for item in sa {
+   if let print = item as? Chemistry {
+      println("Chemistry topics are: '\(print.physics)', \(print.equations)")
+   }else if let example = item as? Maths {
+      println("Maths topics are: '\(example.physics)',  \(example.formulae)")
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Instance physics is: solid physics
+Instance equation is: Hertz
+Instance physics is: Fluid Dynamics
+Instance formulae is: Giga Hertz
+Chemistry topics are: 'solid physics', Hertz
+Maths topics are: 'Fluid Dynamics', Giga Hertz
+Chemistry topics are: 'Thermo physics', Decibels
+Maths topics are: 'Astro Physics', MegaHertz
+Maths topics are: 'Differential Equations', Cosine Series
+ Typecasting: Any and Any Object The keyword 'Any' is used to represent an instance which belongs to any type including function types. 
+class Subjects {
+   var physics: String
+   init(physics: String) {
+      self.physics = physics
+   }
+}
+
+class Chemistry: Subjects {
+   var equations: String
+   init(physics: String, equations: String) {
+      self.equations = equations
+      super.init(physics: physics)
+   }
+}
+
+class Maths: Subjects {
+   var formulae: String
+   init(physics: String, formulae: String) {
+      self.formulae = formulae
+      super.init(physics: physics)
+   }
+}
+
+let sa = [
+   Chemistry(physics: "solid physics", equations: "Hertz"),
+   Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz"),
+   Chemistry(physics: "Thermo physics", equations: "Decibels"),
+   Maths(physics: "Astro Physics", formulae: "MegaHertz"),
+   Maths(physics: "Differential Equations", formulae: "Cosine Series")]
+
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+println("Instance physics is: \(samplechem.physics)")
+println("Instance equation is: \(samplechem.equations)")
+
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+println("Instance physics is: \(samplemaths.physics)")
+println("Instance formulae is: \(samplemaths.formulae)")
+
+var chemCount = 0
+var mathsCount = 0
+
+for item in sa {
+   if let print = item as? Chemistry {
+      println("Chemistry topics are: '\(print.physics)', \(print.equations)")
+   }else if let example = item as? Maths {
+      println("Maths topics are: '\(example.physics)',  \(example.formulae)")
+   }
+}
+
+var exampleany = [Any]()
+
+exampleany.append(12)
+exampleany.append(3.14159)
+exampleany.append("Example for Any")
+exampleany.append(Chemistry(physics: "solid physics", equations: "Hertz"))
+
+for print in exampleany {
+   switch print {
+   case let someInt as Int:
+      println("Integer value is \(someInt)")
+   case let someDouble as Double where someDouble > 0:
+      println("Pi value is \(someDouble)")
+   case let someString as String:
+      println("\(someString)")
+   case let phy as Chemistry:
+      println("Topics '\(phy.physics)', \(phy.equations)")
+   default:
+      println("None")
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Instance physics is: solid physics
+Instance equation is: Hertz
+Instance physics is: Fluid Dynamics
+Instance formulae is: Giga Hertz
+Chemistry topics are: 'solid physics', Hertz
+Maths topics are: 'Fluid Dynamics',  Giga Hertz
+Chemistry topics are: 'Thermo physics', Decibels
+Maths topics are: 'Astro Physics',  MegaHertz
+Maths topics are: 'Differential Equations',  Cosine Series
+Integer value is 12
+Pi value is 3.14159
+Example for Any
+Topics 'solid physics', Hertz
+ AnyObject To represent the instance of any class type, 'AnyObject' keyword is used. 
+class Subjects {
+   var physics: String
+   init(physics: String) {
+      self.physics = physics
+   }
+}
+
+class Chemistry: Subjects {
+   var equations: String
+   init(physics: String, equations: String) {
+      self.equations = equations
+      super.init(physics: physics)
+   }
+}
+
+class Maths: Subjects {
+   var formulae: String
+   init(physics: String, formulae: String) {
+      self.formulae = formulae
+      super.init(physics: physics)
+   }
+}
+
+let saprint: [AnyObject] = [Chemistry(physics: "solid physics", equations: "Hertz"),
+   Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz"),
+   Chemistry(physics: "Thermo physics", equations: "Decibels"),
+   Maths(physics: "Astro Physics", formulae: "MegaHertz"),
+   Maths(physics: "Differential Equations", formulae: "Cosine Series")]
+
+
+let samplechem = Chemistry(physics: "solid physics", equations: "Hertz")
+println("Instance physics is: \(samplechem.physics)")
+println("Instance equation is: \(samplechem.equations)")
+
+
+let samplemaths = Maths(physics: "Fluid Dynamics", formulae: "Giga Hertz")
+println("Instance physics is: \(samplemaths.physics)")
+println("Instance formulae is: \(samplemaths.formulae)")
+
+var chemCount = 0
+var mathsCount = 0
+
+for item in saprint {
+   if let print = item as? Chemistry {
+      println("Chemistry topics are: '\(print.physics)', \(print.equations)")
+   }else if let example = item as? Maths {
+      println("Maths topics are: '\(example.physics)',  \(example.formulae)")
+   }
+}
+
+var exampleany = [Any]()
+exampleany.append(12)
+exampleany.append(3.14159)
+exampleany.append("Example for Any")
+exampleany.append(Chemistry(physics: "solid physics", equations: "Hertz"))
+
+for print in exampleany {
+   switch print {
+   case let someInt as Int:
+      println("Integer value is \(someInt)")
+   case let someDouble as Double where someDouble > 0:
+      println("Pi value is \(someDouble)")
+   case let someString as String:
+      println("\(someString)")
+   case let phy as Chemistry:
+      println("Topics '\(phy.physics)', \(phy.equations)")
+   default:
+      println("None")
+   }
+}
+ When we run the above program using playground, we get the following result ? 
+Instance physics is: solid physics
+Instance equation is: Hertz
+Instance physics is: Fluid Dynamics
+Instance formulae is: Giga Hertz
+Chemistry topics are: 'solid physics', Hertz
+Maths topics are: 'Fluid Dynamics',  Giga Hertz
+Chemistry topics are: 'Thermo physics', Decibels
+Maths topics are: 'Astro Physics',  MegaHertz
+Maths topics are: 'Differential Equations',  Cosine Series
+Integer value is 12
+Pi value is 3.14159
+Example for Any
+Topics 'solid physics', Hertz
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

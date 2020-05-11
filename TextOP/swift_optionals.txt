@@ -1,0 +1,79 @@
+Swift Optionals Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Optionals Advertisements Previous Page Next Page   Swift also introduces Optionals type, which handles the absence of a value. Optionals say either "there is a value, and it equals x" or "there isn't a value at all". An Optional is a type on its own, actually one of Swift’s new super-powered enums. It has two possible values, None and Some(T), where T is an associated value of the correct data type available in Swift. Here’s an optional Integer declaration ? 
+var perhapsInt: Int?
+ Here’s an optional String declaration ? 
+var perhapsStr: String?
+ The above declaration is equivalent to explicitly initializing it to nil which means no value ? 
+var perhapsStr: String?  = nil
+ Let's take the following example to understand how optionals work in Swift ? 
+import Cocoa
+
+var myString:String? = nil
+
+if myString != nil {
+   println(myString)
+}else {
+   println("myString has nil value")
+}
+ When we run the above program using playground, we get the following result ? 
+myString has nil value
+ Optionals are similar to using nil with pointers in Objective-C, but they work for any type, not just classes. Forced Unwrapping If you defined a variable as optional, then to get the value from this variable, you will have to unwrap it. This just means putting an exclamation mark at the end of the variable. Let's take a simple example ? 
+import Cocoa
+
+var myString:String?
+
+myString = "Hello, Swift!"
+
+if myString != nil {
+   println(myString)
+}else {
+   println("myString has nil value")
+}
+ When we run the above program using playground, we get the following result ? 
+Optional("Hello, Swift!")
+ Now let's apply unwrapping to get the correct value of the variable ? 
+import Cocoa
+
+var myString:String?
+
+myString = "Hello, Swift!"
+
+if myString != nil {
+   println( myString! )
+}else {
+   println("myString has nil value")
+}
+ When we run the above program using playground, we get the following result ? 
+Hello, Swift!
+ Automatic Unwrapping You can declare optional variables using exclamation mark instead of a question mark. Such optional variables will unwrap automatically and you do not need to use any further exclamation mark at the end of the variable to get the assigned value. Let's take a simple example ? 
+import Cocoa
+
+var myString:String!
+
+myString = "Hello, Swift!"
+
+if myString != nil {
+   println(myString)
+}else {
+   println("myString has nil value")
+}
+ When we run the above program using playground, we get the following result ? 
+Hello, Swift!
+ Optional Binding Use optional binding to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. An optional binding for the if statement is as follows ? 
+if let constantName = someOptional {
+   statements
+}
+ Let's take a simple example to understand the usage of optional binding ? 
+import Cocoa
+
+var myString:String?
+
+myString = "Hello, Swift!"
+
+if let yourString = myString {
+   println("Your string has - \(yourString)")
+}else {
+   println("Your string does not have a value")
+}
+ When we run the above program using playground, we get the following result ? 
+Your string has - Hello, Swift!
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

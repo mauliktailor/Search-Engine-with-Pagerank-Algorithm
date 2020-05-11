@@ -1,0 +1,181 @@
+Swift ARC Overview Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - ARC Overview Advertisements Previous Page Next Page   Memory management functions and its usage are handled in Swift language through Automatic reference counting (ARC). ARC is used to initialize and deinitialize the system resources thereby releasing memory spaces used by the class instances when the instances are no longer needed. ARC keeps track of information about the relationships between our code instances to manage the memory resources effectively. Functions of ARC ARC allocates a chunk of memory to store the information each and every time when a new class instance is created by init(). Information about the instance type and its values are stored in memory. When the class instance is no longer needed it automatically frees the memory space by deinit() for further class instance storage and retrieval. ARC keeps in track of currently referring class instances properties, constants and variables so that deinit() is applied only to those unused instances. ARC maintains a 'strong reference' to those class instance property, constants and variables to restrict deallocation when the class instance is currently in use. ARC Program 
+class StudDetails {
+   var stname: String!
+   var mark1: Int!
+   init(stname: String, mark1: Int) {
+      self.stname = stname
+      self.mark1 = mark1
+   }
+
+   deinit {
+      println("Deinitialized \(self.stname)")
+      println("Deinitialized \(self.mark1)")
+   }
+}
+
+let stname = "swift"
+let mark1 = 98
+
+println(stname)
+println(mark1)
+ When we run the above program using playground, we get the following result ? 
+swift
+98
+ ARC Strong Reference Cycles Class Instances 
+class studmarks {
+   let name: String
+   var stud1: student?
+
+   init (name: String) {
+      println("Initializing: \(name)")
+      self.name = name
+   }
+
+   deinit {
+      println("Deallocating: \(self.name)")
+   }
+}
+
+class student {
+   let name: String
+   var strname: studmarks?
+
+   init (name: String) {
+      println("Initializing: \(name)")
+      self.name = name
+   }
+    
+   deinit {
+      println("Deallocating: \(self.name)")
+   }
+}
+
+var shiba: studmarks?
+var mari: student?
+
+shiba = studmarks(name: "Swift")
+mari = student(name: "ARC")
+
+shiba!.stud1 = mari
+mari!.strname = shiba
+ When we run the above program using playground, we get the following result ? 
+Initializing: Swift
+Initializing: ARC
+ ARC Weak and Unowned References Class type properties has two ways to resolve strong reference cycles ? Weak References Unowned References These references are used to enable one instance to refer other instances in a reference cycle. Then the instances may refer to each and every instances instead of caring about strong reference cycle. When the user knows that some instance may return 'nil' values we may point that using weak reference. When the instance going to return something rather than nil then declare it with unowned reference. Weak Reference Program 
+class module {
+   let name: String
+   init(name: String) { self.name = name }
+   var sub: submodule?
+   deinit { println("\(name) Is The Main Module") }
+}
+
+class submodule {
+   let number: Int
+
+   init(number: Int) { self.number = number }
+
+   weak var topic: module?
+
+   deinit { println("Sub Module with its topic number is \(number)") }
+}
+
+var toc: module?
+var list: submodule?
+toc = module(name: "ARC")
+list = submodule(number: 4)
+toc!.sub = list
+list!.topic = toc
+
+toc = nil
+list = nil
+ When we run the above program using playground, we get the following result ? 
+ARC Is The Main Module
+Sub Module with its topic number is 4
+ Unowned Reference Program 
+class student {
+   let name: String
+   var section: marks?
+
+   init(name: String) {
+      self.name = name
+   }
+
+   deinit { println("\(name)") }
+}
+class marks {
+   let marks: Int
+   unowned let stname: student
+ 
+   init(marks: Int, stname: student) {
+      self.marks = marks
+      self.stname = stname
+   }
+
+   deinit { println("Marks Obtained by the student is \(marks)") }
+}
+
+var module: student?
+module = student(name: "ARC")
+module!.section = marks(marks: 98, stname: module!)
+module = nil
+ When we run the above program using playground, we get the following result ? 
+ARC
+Marks Obtained by the student is 98
+ Strong Reference Cycles for Closures When we assign a closure to the class instance property and to the body of the closure to capture particular instance strong reference cycle can occur. Strong reference to the closure is defined by 'self.someProperty' or 'self.someMethod()'. Strong reference cycles are used as reference types for the closures. 
+class HTMLElement {
+   let samplename: String
+   let text: String?
+
+   lazy var asHTML: () -> String = {
+      if let text = self.text {
+         return "<\(self.samplename)>\(text)</\(self.samplename)>"
+      }else {
+         return "<\(self.samplename) />"
+      }
+   }
+
+   init(samplename: String, text: String? = nil) {
+      self.samplename = samplename
+      self.text = text
+   }
+
+   deinit {
+      println("\(samplename) is being deinitialized")
+   }
+}
+
+var paragraph: HTMLElement? = HTMLElement(samplename: "p", text: "Welcome to Closure SRC")
+println(paragraph!.asHTML())
+ When we run the above program using playground, we get the following result ? 
+<p>Welcome to Closure SRC</p>
+ Weak and Unowned References When the closure and the instance refer to each other the user may define the capture in a closure as an unowned reference. Then it would not allow the user to deallocate the instance at the same time. When the instance sometime return a 'nil' value define the closure with the weak instance. 
+class HTMLElement {
+   let module: String
+   let text: String?
+
+   lazy var asHTML: () -> String = {
+      [unowned self] in
+      if let text = self.text {
+         return "<\(self.module)>\(text)</\(self.module)>"
+      }else {
+         return "<\(self.module) />"
+      }
+   }
+
+   init(module: String, text: String? = nil) {
+      self.module = module
+      self.text = text
+   }
+
+   deinit {
+      println("\(module) the deinit()")
+   }
+}
+
+var paragraph: HTMLElement? = HTMLElement(module: "Inside", text: "ARC Weak References")
+println(paragraph!.asHTML())
+paragraph = nil
+ When we run the above program using playground, we get the following result ? 
+<Inside>ARC Weak References</Inside>
+Inside the deinit()
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

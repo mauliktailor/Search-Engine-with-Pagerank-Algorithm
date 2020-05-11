@@ -1,0 +1,159 @@
+Swift-Properties Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - Properties Advertisements Previous Page Next Page   Swift language provides properties for class, enumeration or structure to associate values. Properties can be further classified into Stored properties and Computed properties. Difference between Stored Properties and Computed Properties. Stored Property Computed Property Store constant and variable values as instance. Calculate a value rather than storing the value. Provided by classes and structures. Provided by classes, enumerations and structures. Both Stored and Computed properties are associated with instances type. When the properties are associated with its type values then it is defined as 'Type Properties'. Stored and computed properties are usually associated with instances of a particular type. However, properties can also be associated with the type itself. Such properties are known as type properties. Property observers are also used. To observe the value of the stored properties. To observe the property of inherited subclass derived from superclass. Stored Properties Swift introduces Stored Property concept to store the instances of constants and variables. Stored properties of constants are defined by the 'let' keyword and Stored properties of variables are defined by the 'var' keyword. During definition Stored property provides 'default value'. During Initialization the user can initialize and modify the initial values. 
+struct Number{
+   var digits: Int
+   let pi = 3.1415
+}
+
+var n = Number(digits: 12345)
+n.digits = 67
+
+println("\(n.digits)")
+println("\(n.pi)")
+ When we run the above program using playground, we get the following result ? 
+67
+3.1415
+ Consider the following line in the above code ? 
+let pi = 3.1415
+ Here, the variable pi is initialized as a stored property value with the instance pi = 3.1415. So, whenever the instance is referred it will hold the value 3.1415 alone. Another method to have stored property is to have as constant structures. So the whole instance of the structures will be considered as 'Stored Properties of Constants'. 
+struct Number {
+   var digits: Int
+   let numbers = 3.1415
+}
+
+var n = Number(digits: 12345)
+n.digits = 67
+
+println("\(n.digits)")
+println("\(n.numbers)")
+n.numbers = 8.7
+ When we run the above program using playground, we get the following result ? 
+error: cannot assign to 'numbers' in 'n'
+n.numbers = 8.7
+ Instead of reinitializing the 'number' to 8.7 it will return an error message indicating that the 'number' is declared as constant. Lazy Stored Property Swift provides a flexible property called 'Lazy Stored Property' where it won't calculate the initial values when the variable is initialized for the first time. 'lazy' modifier is used before the variable declaration to have it as a lazy stored property. Lazy Properties are used ? To delay object creation. When the property is dependent on other parts of a class, that are not known yet. 
+class sample {
+   lazy var no = number() // `var` declaration is required.
+}
+
+class number {
+   var name = "Swift"
+}
+
+var firstsample = sample()
+println(firstsample.no.name)
+ When we run the above program using playground, we get the following result ? 
+Swift
+ Instance Variables In Objective C, Stored properties also have instance variables for back up purposes to store the values declared in stored property. Swift integrates both these concepts into a single 'stored property' declaration. Instead of having a corresponding instance variable and back up value 'stored property' contains all integrated information defined in a single location about the variables property by variable name, data type and memory management functionalities. Computed Properties Rather than storing the values computed properties provide a getter and an optional setter to retrieve and set other properties and values indirectly. 
+class sample {
+   var no1 = 0.0, no2 = 0.0
+   var length = 300.0, breadth = 150.0
+
+   var middle: (Double, Double) {
+      get{
+         return (length / 2, breadth / 2)
+      }set(axis) {
+         no1 = axis.0 - (length / 2)
+         no2 = axis.1 - (breadth / 2)
+      }
+   }
+}
+
+var result = sample()
+println(result.middle)
+result.middle = (0.0, 10.0)
+
+println(result.no1)               
+println(result.no2)  
+ When we run the above program using playground, we get the following result ? 
+(150.0, 75.0)
+-150.0
+-65.0
+ When a computed property left the new value as undefined, the default value will be set for that particular variable. Computed Properties as Read-Only Properties A read-only property in computed property is defined as a property with getter but no setter. It is always used to return a value. The variables are further accessed through a '.' Syntax but cannot be set to another value. 
+class film {
+   var head = ""
+   var duration = 0.0
+   var metaInfo: [String:String] {
+      return [
+         "head": self.head,
+         "duration":"\(self.duration)"
+      ]
+   }
+}
+
+var movie = film()
+movie.head = "Swift Properties"
+movie.duration = 3.09
+
+println(movie.metaInfo["head"]!)      
+println(movie.metaInfo["duration"]!)
+ When we run the above program using playground, we get the following result ? 
+Swift Properties
+3.09
+ Computed Properties as Property Observers In Swift to observe and respond to property values Property Observers are used. Each and every time when property values are set property observers are called. Except lazy stored properties we can add property observers to 'inherited' property by method 'overriding'. Property Observers can be defined by either. Before Storing the value - willset. After Storing the new value - didset. When a property is set in an initializer willset and didset observers cannot be called. 
+class Samplepgm {
+   var counter: Int = 0 {
+      willSet(newTotal) {
+         println("Total Counter is: \(newTotal)")
+      }
+      didSet {
+         if counter > oldValue {
+            println("Newly Added Counter \(counter - oldValue)")
+         }
+      }
+   }
+}
+let NewCounter = Samplepgm()
+NewCounter.counter = 100
+NewCounter.counter = 800
+ When we run the above program using playground, we get the following result ? 
+Total Counter is: 100
+Newly Added Counter 100
+Total Counter is: 800
+Newly Added Counter 700
+ Local and Global Variables Local and global variable are declared for computing and observing the properties. Local Variables Global Variables Variables that are defined within a function, method, or closure context. Variables that are defined outside function, method, closure, or type context. Used to store and retrieve values. Used to store and retrieve values. Stored properties is used to get and set the values. Stored properties is used to get and set the values. Computed properties are also used. Computed properties are also used. Type Properties Properties are defined in the Type definition section with curly braces {} and scope of the variables are also defined previously. For defining type properties for value types 'static' keyword is used and for class types 'class' keyword is used. Syntax 
+struct Structname {
+   static var storedTypeProperty = " "
+   static var computedTypeProperty: Int {
+      // return an Int value here
+   }
+}
+
+enum Enumname {
+   static var storedTypeProperty = " "
+   static var computedTypeProperty: Int {
+      // return an Int value here
+   }
+}
+
+class Classname {
+   class var computedTypeProperty: Int {
+      // return an Int value here
+   }
+}
+ Querying and Setting Properties Just like instance properties Type properties are queried and set with '.' Syntax just on the type alone instead of pointing to the instance. 
+struct StudMarks {
+   static let markCount = 97
+   static var totalCount = 0
+   var InternalMarks: Int = 0 {
+      didSet {
+         if InternalMarks > StudMarks.markCount {
+            InternalMarks = StudMarks.markCount
+         }
+         if InternalMarks > StudMarks.totalCount {
+            StudMarks.totalCount = InternalMarks
+         }
+      }
+   }
+}
+
+var stud1Mark1 = StudMarks()
+var stud1Mark2 = StudMarks()
+
+stud1Mark1.InternalMarks = 98
+println(stud1Mark1.InternalMarks) 
+
+stud1Mark2.InternalMarks = 87
+println(stud1Mark2.InternalMarks)
+ When we run the above program using playground, we get the following result ? 
+97
+87
+ Previous Page Print Next Page   Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go

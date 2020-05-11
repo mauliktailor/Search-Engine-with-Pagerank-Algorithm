@@ -1,0 +1,25 @@
+Swift do...while Loop Jobs  SENDFiles  Whiteboard  Net Meeting Tools  Articles Facebook Google+ Twitter Linkedin YouTube Home Tutorials Library Coding Ground Tutor Connect Videos Search Swift Tutorial Swift - Home Swift - Overview Swift - Environment Swift - Basic Syntax Swift - Data Types Swift - Variables Swift - Optionals Swift - Constants Swift - Literals Swift - Operators Swift - Decision Making Swift - Loops Swift - Strings Swift - Characters Swift - Arrays Swift - Dictionaries Swift - Functions Swift - Closures Swift - Enumerations Swift - Structures Swift - Classes Swift - Properties Swift - Methods Swift - Subscripts Swift - Inheritance Swift - Initialization Swift - Deinitialization Swift - ARC Overview Swift - Optional Chaining Swift - Type Casting Swift - Extensions Swift - Protocols Swift - Generics Swift - Access Control Swift Useful Resources Swift - Quick Guide Swift - Useful Resources Swift - Discussion Selected Reading Developer's Best Practices Questions and Answers Effective Resume Writing HR Interview Questions Computer Glossary Who is Who Swift - do...while Loop Advertisements Previous Page Next Page   Unlike for and while loops, which test the loop condition at the top of the loop, the do...while loop checks its condition at the bottom of the loop. A do...while loop is similar to a while loop, except that a do...while loop is guaranteed to execute at least once. Syntax The syntax of a do...while loop in Swift is ? 
+do {
+   statement(s);
+}while( condition );
+ It should be noted that the conditional expression appears at the end of the loop, so the statement(s) in the loop execute once before the condition is tested. If the condition is true, the control flow jumps back up to do, and the statement(s) in the loop execute again. This process repeats until the given condition becomes false. The number 0, the strings '0' and "", the empty list(), and undef are all false in a Boolean context and all other values are true. Negation of a true value by ! or not returns a special false value. Flow Diagram Example 
+import Cocoa
+ 
+var index = 10
+
+do {
+   println( "Value of index is \(index)")
+   index = index + 1
+}while index < 20 
+ When the above code is executed, it produces the following result ? 
+Value of index is 10
+Value of index is 11
+Value of index is 12
+Value of index is 13
+Value of index is 14
+Value of index is 15
+Value of index is 16
+Value of index is 17
+Value of index is 18
+Value of index is 19
+ Previous Page Print Next Page   swift_loops.htm Advertisements Write for us FAQ's Helping Contact © Copyright 2017. All Rights Reserved. go
